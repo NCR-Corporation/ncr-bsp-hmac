@@ -3,83 +3,56 @@ const Base64 = require("crypto-js/enc-base64");
 
 /**
  * Function to generate HMAC Key.
- * @param {string} url
- * @param {Date} date
- * @param {string} method
- * @param {string} contentType
- * @param {string} organization
- * @param {string} secretKey
- * @param {string} contentMD5 optional
+ * @param {string} sharedKey - A user's Shared Key
+ * @param {string} secretKey - A user's Secret Key
+ * @param {Date} date - An unformated date object
+ * @param {string} httpMethod - GET/POST/PUT
+ * @param {string} requestURL - The API url requesting against
+ * @param {string} [contentType=application/json] - Optional
+ * @param {string} [nepApplicationKey] - Optional
+ * @param {string} [nepCorrelationID] - Optional
+ * @param {string} [nepOrganization] - Optional
+ * @param {string} [nepServiceVersion] - Optional
  */
 module.exports = function ({
-  url,
-  date,
-  method,
-  contentType,
-  organization,
+  sharedKey,
   secretKey,
-  contentMD5 = null,
+  date,
+  httpMethod,
+  requestURL,
+  contentType = "application/json",
+  contentMD5,
+  nepApplicationKey,
+  nepCorrelationID,
+  nepOrganization,
+  nepServiceVersion,
 }) {
-  /**
-   * @param {object} variables
-   */
-  convertVariables = function (variables) {
-    const regexPattern = /({{(.*?)}})/g;
-    let convertedContent = variables;
-    let matchedVar = new RegExp(regexPattern).exec(convertedContent);
-    while (matchedVar !== null) {
-      const variableReplacement = matchedVar[1];
-      const variableName = matchedVar[2];
-      const variableValue =
-        process.env[variableName] || process.env[variableName];
-      convertedContent = convertedContent.replace(
-        variableReplacement,
-        variableValue
-      );
-      matchedVar = new RegExp(regexPattern).exec(convertedContent);
-    }
-    return convertedContent;
-  };
+  let uri = encodeURI(requestURL.replace(/^https?:\/\/[^/]+\//, "/"));
 
-  /**
-   * @param {object} request
-   */
-  signableContent = function (request) {
-    const requestPath = convertVariables(request.url.trim()).replace(
-      /^https?:\/\/[^/]+\//,
-      "/"
-    );
-    const params = [
-      request.method,
-      requestPath,
-      request.contentType,
-      convertVariables(request.organization),
-    ];
-    if (request.headers["content-md5"]) {
-      params.push(request.headers["content-md5"]);
-    }
-    return params.filter((p) => p && p.length > 0).join("\n");
-  };
+  const nonce = date.toISOString().slice(0, 19) + ".000Z";
 
-  /**
-   * @param {Date} date
-   * @param {string} secretKey
-   */
-  uniqueKey = function (date, secretKey) {
-    const nonce = date.toISOString().slice(0, 19) + ".000Z";
-    return secretKey + nonce;
-  };
+  const oneTimeSecret = secretKey + nonce;
 
-  const key = uniqueKey(date, secretKey);
-  const signedContent = signableContent({
-    url,
-    date,
-    method,
-    contentType,
-    organization,
-    secretKey,
-    contentMD5,
-  });
-  const hmac = hmacSHA512(signedContent, key);
-  return Base64.stringify(hmac);
+  let toSign = httpMethod + "\n" + uri;
+  if (contentType) {
+    toSign += "\n" + contentType.trim();
+  }
+  if (contentMD5) {
+    toSign += "\n" + contentMD5.trim();
+  }
+  if (nepApplicationKey) {
+    toSign += "\n" + nepApplicationKey.trim();
+  }
+  if (nepCorrelationID) {
+    toSign += "\n" + nepCorrelationID.trim();
+  }
+  if (nepOrganization) {
+    toSign += "\n" + nepOrganization.trim();
+  }
+  if (nepServiceVersion) {
+    toSign += "\n" + nepServiceVersion.trim();
+  }
+
+  const key = hmacSHA512(toSign, oneTimeSecret);
+  return `${sharedKey}:${Base64.stringify(key)}`;
 };

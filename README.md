@@ -1,9 +1,11 @@
-# NCR BSP HMAC
+# NCR Business Services Platform HMAC
 
-[Introduction](#headers)  
-[Advantages](#advantages)
-[Implementation](#implementation)
-[Examples](#examples)
+### Table of Contents
+
+1. [Introduction](#introduction)
+2. [Advantages](#advantages)
+3. [Implementation](#implementation)
+4. [Examples](#examples)
 
 <a name="introduction"></a>
 
