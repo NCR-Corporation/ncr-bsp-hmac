@@ -65,7 +65,7 @@ The credentials for `Authorization` request contain a user's shared key and HMAC
 In this repository we've provided a couple examples in different languages. For each language we provide:
 
 - A helper function in `hmac.*`
-- A GET request example in `get.*`
-- A POST/PUT request example in `post.*`
+- A GET request example in `example-get.*`
+- A POST/PUT request example in `example-post.*`
 
 To use these functions, you will need your Shared Key, Secret Key, and Organization.

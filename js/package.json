@@ -1,0 +1,17 @@
+{
+  "name": "ncr-bsp-hmac-js-examples",
+  "version": "1.0.0",
+  "description": "Examples of using HMAC with JS",
+  "main": "example-get.js",
+  "dependencies": {
+    "crypto-js": "^4.0.0",
+    "node-fetch": "^2.6.1",
+    "postman-collection": "^3.6.9"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
