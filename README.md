@@ -69,3 +69,10 @@ In this repository we've provided a couple examples in different languages. For 
 - A POST/PUT request example in `example-post.*`
 
 To use these functions, you will need your Shared Key, Secret Key, and Organization.
+
+| [JS Examples](/tree/main/js) | [Python Examples](/tree/main/python) |
+| ---------------------------- | ------------------------------------ |
+
+## Support
+
+Feel free to open an issue to ask questions.
