@@ -1,4 +1,4 @@
-const generateHMAC = require("./generateHMAC");
+const hmac = require("./hmac");
 
 let organization = "";
 let secretKey = "";
@@ -21,7 +21,7 @@ let headers = {
   contentMD5: contentMD5 ? contentMD5 : "",
 };
 
-const hmacAccessKey = generateHMAC(headers);
+const hmacAccessKey = hmac(headers);
 
 var requestOptions = {
   method: headers.method,
