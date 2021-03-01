@@ -70,7 +70,7 @@ In this repository we've provided a couple examples in different languages. For 
 
 To use these functions, you will need your Shared Key, Secret Key, and Organization.
 
-| [JS Examples](/tree/main/js) | [Python Examples](/tree/main/python) |
+| [JS Examples](/blob/main/js) | [Python Examples](/blob/main/python) |
 | ---------------------------- | ------------------------------------ |
 
 ## Support
