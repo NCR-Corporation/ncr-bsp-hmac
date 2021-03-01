@@ -1,4 +1,13 @@
-# HMAC Examples
+# NCR BSP HMAC
+
+[Introduction](#headers)  
+[Advantages](#advantages)
+[Implementation](#implementation)
+[Examples](#examples)
+
+<a name="introduction"></a>
+
+## Introduction
 
 In order to use NCR Business Services Platform APIs in a production environment, hash-based message authentication code is required. Access Key authentication uses a hash-based message authentication code (HMAC) to uniquely sign a single HTTP request. This method is intended for non-interactive users (technical users) who are involved in software-to-software or system-to-system authentication scenarios.
 
@@ -16,6 +25,8 @@ Host: gateway.ncrplatform.com
 
 The scheme used in the `Authorization` header is `AccessKey <shared-key>:<hmac>`.
 
+<a name="advantages"></a>
+
 ## Advantages
 
 There are some advantages to HMAC authentication, such as:
@@ -25,6 +36,8 @@ There are some advantages to HMAC authentication, such as:
 - The secret key never expires, which simplifies interaction with the platform as compared to using temporary access tokens.
 - This method guarantees authenticity of the full request instead of a specific part of the request (such as the Authorization header).
 - Actual user secrets are never transmitted over the wire as each request has a unique HMAC.
+
+<a name="implementation"></a>
 
 ## Implementation
 
@@ -42,6 +55,8 @@ The credentials for `Authorization` request contain a user's shared key and HMAC
    - `nep-correlation-id` header value (optional)
    - `nep-organization` header value (optional)
    - `nep-service-version` header value (optional)
+
+<a name="examples"></a>
 
 ## Examples
 
