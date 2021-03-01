@@ -5,8 +5,7 @@
   "main": "example-get.js",
   "dependencies": {
     "crypto-js": "^4.0.0",
-    "node-fetch": "^2.6.1",
-    "postman-collection": "^3.6.9"
+    "node-fetch": "^2.6.1"
   },
   "devDependencies": {},
   "scripts": {
