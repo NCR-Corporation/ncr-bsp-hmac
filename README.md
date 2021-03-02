@@ -70,8 +70,8 @@ In this repository we've provided a couple examples in different languages. For 
 
 To use these functions, you will need your Shared Key, Secret Key, and Organization.
 
-| [JS Examples](/blob/main/js) | [Python Examples](/blob/main/python) |
-| ---------------------------- | ------------------------------------ |
+| [JS Examples](https://github.com/NCR-Corporation/ncr-bsp-hmac/tree/main/js) | [Python Examples](https://github.com/NCR-Corporation/ncr-bsp-hmac/tree/main/python) |
+| --------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
 
 ## Support
 
