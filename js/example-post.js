@@ -21,7 +21,7 @@ async function examplePost() {
     nepOrganization: "",
     requestURL:
       "https://gateway-staging.ncrcloud.com/site/sites/find-by-criteria?pageNumber=0&pageSize=200",
-    httpMethod: "GET",
+    httpMethod: "POST",
     contentType: "application/json",
   };
 
