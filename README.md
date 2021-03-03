@@ -48,21 +48,21 @@ The credentials for `Authorization` request contain a user's shared key and HMAC
 1. Get the native `date` value from the request's HTTP headers (passed in)
 
    ```js
-   //js
+   // js example
    let date = new Date();
    ```
 
 2. Convert the native `date` to `ISO-8601` string format
 
    ```js
-   //js
+   // js example
    let isoDate = date.toISOString().slice(0, 19) + ".000Z";
    ```
 
 3. Generate a unique key from the following concatenate string: `{secretKey + ':' + date}`
 
    ```js
-   //js
+   // js example
    const uniqueKey = secretKey + isoDate;
    ```
 
@@ -78,7 +78,8 @@ The credentials for `Authorization` request contain a user's shared key and HMAC
    - `nep-service-version` header value (optional)
 
    ```js
-   // js
+   // js example
+   let uri = encodeURI(requestURL.replace(/^https?:\/\/[^/]+\//, "/"));
    let toSign = httpMethod + "\n" + uri;
    if (contentType) {
      toSign += "\n" + contentType.trim();
@@ -103,7 +104,7 @@ The credentials for `Authorization` request contain a user's shared key and HMAC
 5. Encrypt the generated signature with the unique key (from Step 3)
 
    ```js
-   // js from crypot-js
+   // js from crypto-js
    const key = hmacSHA512(toSign, oneTimeSecret);
    const hmacKey = Base64.stringify(key);
    // visit hmac.js for more details
@@ -115,7 +116,7 @@ The credentials for `Authorization` request contain a user's shared key and HMAC
 
 In this repository we've provided a couple examples in different languages. For each language we provide:
 
-- A helper function in `hmac.*`
+- A helper function in `hmac.*` or `hmacHelper.*`
 - A GET request example in `example-get.*`
 - A POST/PUT request example in `example-post.*`
 
