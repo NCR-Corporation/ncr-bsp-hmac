@@ -46,17 +46,68 @@ There are some advantages to HMAC authentication, such as:
 The credentials for `Authorization` request contain a user's shared key and HMAC generated from their shared key. The general algorithm for generating HMAC goes as follows:
 
 1. Get the native `date` value from the request's HTTP headers (passed in)
+
+   ```js
+   //js
+   let date = new Date();
+   ```
+
 2. Convert the native `date` to `ISO-8601` string format
+
+   ```js
+   //js
+   let isoDate = date.toISOString().slice(0, 19) + ".000Z";
+   ```
+
 3. Generate a unique key from the following concatenate string: `{secretKey + ':' + date}`
+
+   ```js
+   //js
+   const uniqueKey = secretKey + isoDate;
+   ```
+
 4. Generate a signature from the HTTP request data to use in HMAC calculation. The HTTP request data consists of the following parts:
-   - HTTP method from the request (Required)
-   - Relaite URI from the HTTP request, path, and query string (Required)
+
+   - **[Required]** HTTP method from the request
+   - **[Required]** Encode URI from the HTTP request, path, and query string
    - Content-Type header value (optional)
    - Content-MD5 header value (optional)
    - `nep-application-key` header value (optional)
    - `nep-correlation-id` header value (optional)
    - `nep-organization` header value (optional)
    - `nep-service-version` header value (optional)
+
+   ```js
+   // js
+   let toSign = httpMethod + "\n" + uri;
+   if (contentType) {
+     toSign += "\n" + contentType.trim();
+   }
+   if (contentMD5) {
+     toSign += "\n" + contentMD5.trim();
+   }
+   if (nepApplicationKey) {
+     toSign += "\n" + nepApplicationKey.trim();
+   }
+   if (nepCorrelationID) {
+     toSign += "\n" + nepCorrelationID.trim();
+   }
+   if (nepOrganization) {
+     toSign += "\n" + nepOrganization.trim();
+   }
+   if (nepServiceVersion) {
+     toSign += "\n" + nepServiceVersion.trim();
+   }
+   ```
+
+5. Encrypt the generated signature with the unique key (from Step 3)
+
+   ```js
+   // js from crypot-js
+   const key = hmacSHA512(toSign, oneTimeSecret);
+   const hmacKey = Base64.stringify(key);
+   // visit hmac.js for more details
+   ```
 
 <a name="examples"></a>
 
@@ -75,4 +126,4 @@ To use these functions, you will need your Shared Key, Secret Key, and Organizat
 
 ## Support
 
-Feel free to open an issue to ask questions.
+Feel free to open an issue to ask questions or if any issues are found.

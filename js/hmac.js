@@ -30,9 +30,9 @@ module.exports = function ({
 }) {
   let uri = encodeURI(requestURL.replace(/^https?:\/\/[^/]+\//, "/"));
 
-  const nonce = date.toISOString().slice(0, 19) + ".000Z";
+  const isoDate = date.toISOString().slice(0, 19) + ".000Z";
 
-  const oneTimeSecret = secretKey + nonce;
+  const oneTimeSecret = secretKey + isoDate;
 
   let toSign = httpMethod + "\n" + uri;
   if (contentType) {
