@@ -3,15 +3,6 @@ const fetch = require("node-fetch");
 
 // An example post request to find nearby sites from the Sites API
 async function examplePost() {
-  let body = {
-    sort: [
-      {
-        column: "siteName",
-        direction: "asc",
-      },
-    ],
-  };
-
   let date = new Date();
 
   let options = {
@@ -26,6 +17,15 @@ async function examplePost() {
   };
 
   const hmacAccessKey = hmac(headers);
+
+  let body = {
+    sort: [
+      {
+        column: "siteName",
+        direction: "asc",
+      },
+    ],
+  };
 
   var requestOptions = {
     method: options.httpMethod,

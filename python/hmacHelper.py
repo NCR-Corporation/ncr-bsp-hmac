@@ -1,11 +1,30 @@
-import urllib
+from urllib.parse import urlparse
 import base64
 import hmac
 import hashlib
 
 
 def hmacHelper(sharedKey, secretKey, dateHeader, httpMethod, requestURL, contentType, contentMD5, nepApplicationKey, nepCorrelationID, nepOrganization, nepServiceVersion):
-    toSign = httpMethod + "\n" + urllib.parse.urlsplit(requestURL).path
+    '''
+    :param str sharedKey: A user's Shared Key
+    :param str secretKey: A user's Secret Key
+    :param date date: An unformated date object
+    :param str httpMethod: GET/POST/PUT
+    :param str requestURL: The API url requesting against
+    :param str [contentType=application/json]: Optional
+    :param str [nepApplicationKey]: Optional
+    :param str [nepCorrelationID]: Optional
+    :param str [nepOrganization]: Optional
+    :param str [nepServiceVersion]: Optional
+    :return: sharedKey:hmac
+    :rtype: string
+    '''
+    parsedUrl = urlparse(requestURL)
+    pathAndQuery = parsedUrl.path
+    if parsedUrl.query:
+        pathAndQuery += '?' + parsedUrl.query
+    toSign = httpMethod + "\n" + pathAndQuery
+    print(toSign)
     if contentType is not None:
         toSign += "\n" + contentType
 
@@ -24,8 +43,6 @@ def hmacHelper(sharedKey, secretKey, dateHeader, httpMethod, requestURL, content
     if nepServiceVersion is not None:
         toSign += "\n" + nepServiceVersion
 
-    print(toSign)
-    print('######')
     isoDate = dateHeader.isoformat(timespec='milliseconds') + 'Z'
     key = bytes(
         secretKey + isoDate, 'utf-8')

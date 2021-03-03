@@ -7,19 +7,25 @@ The example helper function lives in `hmac.js` which containst the details on ho
 1. Run `npm install` to install the two dependencies - `node-fetch` and `crypto-js`
 2. Inside of `example-get.js` and `example-post.js` update the `nepOrganization`, `secretKey`, and `sharedKey` with your values:
 
-```js
-  let options = {
-    date,
-    secretKey: "INSERT HERE",
-    sharedKey: "INSERT HERE",
-    nepOrganization: "INSERT HERE",
-    ...
-  };
-```
+   ```js
+     let options = {
+       date,
+       secretKey: "INSERT HERE",
+       sharedKey: "INSERT HERE",
+       nepOrganization: "INSERT HERE",
+       ...
+     };
+   ```
 
 3. To test:
 
-```console
-$ node example-get.js
-// node example-post.js
-```
+   ```console
+   $ node example-get.js
+   // GET Request to find sites nearby:
+   // {'sites': [], 'totalResults': 0}
+   ```
+
+   ```console
+   $ node example-post.js
+   // POST Request to find sites by criteria
+   ```

@@ -13,6 +13,7 @@ const Base64 = require("crypto-js/enc-base64");
  * @param {string} [nepCorrelationID] - Optional
  * @param {string} [nepOrganization] - Optional
  * @param {string} [nepServiceVersion] - Optional
+ * @returns {string} sharedkey:hmac
  */
 module.exports = function ({
   sharedKey,
