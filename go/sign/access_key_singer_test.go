@@ -10,9 +10,8 @@ import (
 )
 
 func ExampleAccessKeyHTTPSigner_Sign() {
-	req, _ := http.NewRequest("GET",
-		"https://gateway-staging.ncrcloud.com/site/sites/find-nearby/88.05,46.25?radius=10000",
-		strings.NewReader(""))
+	url := "https://gateway-staging.ncrcloud.com/site/sites/find-nearby/88.05,46.25?radius=10000"
+	req, _ := http.NewRequest("GET", url, strings.NewReader(""))
 	req.Header.Add("Date", time.Now().UTC().Format(http.TimeFormat))
 	req.Header.Add("nep-organization", "")
 	req.Header.Add("Content-Type", "application/json")
