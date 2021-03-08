@@ -6,10 +6,11 @@ import (
 	"log"
 	"net/http"
 	"strings"
+	"testing"
 	"time"
 )
 
-func ExampleAccessKeyHTTPSigner_Sign() {
+func TestAccessKeyHTTPSigner_Sign(t *testing.T) {
 	url := "https://gateway-staging.ncrcloud.com/site/sites/find-nearby/88.05,46.25?radius=10000"
 	req, _ := http.NewRequest("GET", url, strings.NewReader(""))
 	req.Header.Add("Date", time.Now().UTC().Format(http.TimeFormat))
