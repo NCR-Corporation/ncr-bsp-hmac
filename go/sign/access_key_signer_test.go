@@ -3,7 +3,6 @@ package sign
 import (
 	"fmt"
 	"io/ioutil"
-	"log"
 	"net/http"
 	"strings"
 	"testing"
@@ -24,17 +23,17 @@ func TestAccessKeyHTTPSigner_Sign(t *testing.T) {
 	s, _ := NewAccessKeyHTTPSigner(sharedKey, secretKey)
 	req, err := s.Sign(req)
 	if err != nil {
-		log.Fatal(err)
+		t.Fatal(err)
 	}
 
 	res, err := http.DefaultClient.Do(req)
 	if err != nil {
-		log.Fatal(err)
+		t.Fatal(err)
 	}
 	defer res.Body.Close()
 	b, err := ioutil.ReadAll(res.Body)
 	if err != nil {
-		log.Fatal(err)
+		t.Fatal(err)
 	}
 	fmt.Printf("%s\n", b)
 }
