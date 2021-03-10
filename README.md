@@ -6,6 +6,7 @@
 2. [Advantages](#advantages)
 3. [Implementation](#implementation)
 4. [Examples](#examples)
+5. [Contributing](#contributing)
 
 <a name="introduction"></a>
 
