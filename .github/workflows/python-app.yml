@@ -33,4 +33,3 @@ jobs:
         SECRET_KEY: ${{ secrets.SECRET_KEY }}
         SHARED_KEY: ${{ secrets.SHARED_KEY }}
         ORGANIZATION: ${{ secrets.ORGANIZATION }}
-        SECRET_KEY: ${{ secrets.SECRET_KEY }}
