@@ -24,7 +24,6 @@ def hmacHelper(sharedKey, secretKey, dateHeader, httpMethod, requestURL, content
     if parsedUrl.query:
         pathAndQuery += '?' + parsedUrl.query
     toSign = httpMethod + "\n" + pathAndQuery
-    print(toSign)
     if contentType is not None:
         toSign += "\n" + contentType
 

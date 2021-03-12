@@ -6,9 +6,9 @@ import json
 
 
 def examplePost():
-    secretKey = 'INSERT SECRET'
-    sharedKey = 'INSERT SHARED'
-    nepOrganization = 'INSERT ORGANIZATION'
+    secretKey = 'INSERT_SECRET'
+    sharedKey = 'INSERT_SHARED'
+    nepOrganization = 'INSERT_ORGANIZATION'
 
     now = datetime.now(tz=timezone.utc)
     now = datetime(now.year, now.month, now.day, hour=now.hour,
@@ -37,7 +37,13 @@ def examplePost():
 
     request = requests.post(requestURL, data=payload, headers=headers)
 
-    print(request.json())
+    res = dict()
+    res['status'] = request.status_code
+    res['data'] = request.json()
+
+    print(res)
+
+    return res
 
 
 examplePost()
