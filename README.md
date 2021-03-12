@@ -1,5 +1,7 @@
 # NCR Business Services Platform HMAC
 
+[![Python Tests](https://github.com/NCR-Corporation/ncr-bsp-hmac/actions/workflows/python-app.yml/badge.svg)](https://github.com/NCR-Corporation/ncr-bsp-hmac/actions/workflows/python-app.yml)
+
 ### Table of Contents
 
 1. [Introduction](#introduction)
