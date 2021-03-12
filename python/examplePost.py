@@ -5,10 +5,7 @@ import requests
 import json
 
 
-def examplePost():
-    secretKey = 'INSERT_SECRET'
-    sharedKey = 'INSERT_SHARED'
-    nepOrganization = 'INSERT_ORGANIZATION'
+def examplePost(secretKey="INSERT_SECRET", sharedKey="INSERT_SHARED", nepOrganization="INSERT_ORGANIZATION"):
 
     now = datetime.now(tz=timezone.utc)
     now = datetime(now.year, now.month, now.day, hour=now.hour,
