@@ -1,14 +1,14 @@
 const hmac = require("./hmac");
 const fetch = require("node-fetch");
 
-async function exampleGet() {
+async function exampleGet(secretKey, sharedKey, nepOrganization) {
   let date = new Date();
 
   let options = {
     date,
-    secretKey: "",
-    sharedKey: "",
-    nepOrganization: "",
+    secretKey,
+    sharedKey,
+    nepOrganization,
     requestURL:
       "https://gateway-staging.ncrcloud.com/site/sites/find-nearby/88.05,46.25?radius=10000",
     httpMethod: "GET",
@@ -27,12 +27,14 @@ async function exampleGet() {
       Date: date.toGMTString(),
     },
   };
-  console.log(requestOptions.headers);
 
   const response = await fetch(options.requestURL, requestOptions);
   const data = await response.json();
 
-  console.log(data);
+  return {
+    status: response.status,
+    data,
+  };
 }
 
-exampleGet();
+module.exports = exampleGet;

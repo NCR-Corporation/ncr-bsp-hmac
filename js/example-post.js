@@ -2,21 +2,21 @@ const hmac = require("./hmac");
 const fetch = require("node-fetch");
 
 // An example post request to find nearby sites from the Sites API
-async function examplePost() {
+async function examplePost(secretKey, sharedKey, nepOrganization) {
   let date = new Date();
 
   let options = {
     date,
-    secretKey: "",
-    sharedKey: "",
-    nepOrganization: "",
+    secretKey,
+    sharedKey,
+    nepOrganization,
     requestURL:
       "https://gateway-staging.ncrcloud.com/site/sites/find-by-criteria?pageNumber=0&pageSize=200",
     httpMethod: "POST",
     contentType: "application/json",
   };
 
-  const hmacAccessKey = hmac(headers);
+  const hmacAccessKey = hmac(options);
 
   let body = {
     sort: [
@@ -46,9 +46,12 @@ async function examplePost() {
   if (status == 204) {
     console.log("Success");
   } else {
-    let json = await response.json();
-    console.log(json);
+    let data = await response.json();
+    return {
+      status,
+      data,
+    };
   }
 }
 
-examplePost();
+module.exports = examplePost;
