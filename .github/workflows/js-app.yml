@@ -24,7 +24,9 @@ jobs:
         node-version: ${{ matrix.node-version }}
     - run: cd js && npm install
     - name: Test with jest
-      run: npm test
+      run: |
+        cd js
+        npm test
       env:
         SECRET_KEY: ${{ secrets.SECRET_KEY }}
         SHARED_KEY: ${{ secrets.SHARED_KEY }}
