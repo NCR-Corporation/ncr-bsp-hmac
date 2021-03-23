@@ -4,7 +4,7 @@ The example helper function lives in `hmac.psm1` which contains the HMAC `Access
 
 ### Getting Started
 
-1. Inside of `example-get.py` and `example-post.py` update the `$organization`, `$secretKey`, and `$sharedKey` with your values:
+1. Inside of `example-get.ps1` and `example-post.ps1` update the `$organization`, `$secretKey`, and `$sharedKey` with your values:
 
    ```powershell
    $secretKey = 'INSERT SECRET KEY'
