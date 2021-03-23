@@ -1,4 +1,4 @@
-# HMAC Powershell Examples
+# HMAC PowerShell Examples
 
 The example helper function lives in `hmac.psm1` which contains the HMAC `AccessKey` implementation.
 
@@ -25,4 +25,3 @@ The example helper function lives in `hmac.psm1` which contains the HMAC `Access
 
    // {"lastPage":true,"pageNumber":0,"totalPages":0,"totalResults":0,"pageContent":[]}
    ```
-   
