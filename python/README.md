@@ -18,12 +18,12 @@ _This code uses Python 3_
 3. To test:
 
    ```console
-   $ python3 example-get.py
+   $ python3 exampleGet.py
    // GET Request to find sites nearby:
    // {'sites': [], 'totalResults': 0}
    ```
 
    ```console
-   $ python3 example-post.py
+   $ python3 examplePost.py
    // POST Request to find sites by criteria
    ```
