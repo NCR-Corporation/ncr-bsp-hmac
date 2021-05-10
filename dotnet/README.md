@@ -18,7 +18,7 @@ _This code uses Dotnet 5_
    ```console
    $cd SendGet
    $dotnet add package RestSharp
-   // Adds the package to the SendGet call
+   // Adds the package to the SendPost call
    ```
 
 3. Inside of `Program.cs` in the current directory, update the `nepOrganization`, `secretKey`, and `sharedKey` with your values:
