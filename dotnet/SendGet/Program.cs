@@ -47,7 +47,6 @@ namespace SendGet
 
             string pathAndQuery = url.PathAndQuery;
 
-            Console.WriteLine(date);
             string secretDate = date + ".000Z";
 
             string oneTimeSecret = secretKey + secretDate;
@@ -87,7 +86,6 @@ namespace SendGet
                 hash = shaM.ComputeHash(data);
             }
 
-            Console.WriteLine(sharedKey + ":" + System.Convert.ToBase64String(hash));
             string accessKey = sharedKey + ":" + System.Convert.ToBase64String(hash);
             return accessKey;
         }

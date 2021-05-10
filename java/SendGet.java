@@ -69,6 +69,7 @@ public class SendGet extends HmacGenerator{
         }
 
         System.out.println("{'status': " + status + ", 'data': " + content + "}" );
+        
         in.close();
         connection.disconnect();
     }
