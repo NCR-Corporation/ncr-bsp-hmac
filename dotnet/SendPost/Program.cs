@@ -7,11 +7,29 @@ namespace SendPost
 {
     class Program
     {
+        /**
+        *Main
+        *@param args
+        */
         static void Main(string[] args)
         {
             callPost("INSERT_SECRET","INSERT_SHARED","INSERT_ORGANIZATION");
         }
 
+        /**
+        * @param sharedKey  A user's Shared Key
+        * @param secretKey A user's Secret Key
+        * @param date An unformated date string
+        * @param httpMethod GET/POST/PUT
+        * @param requestUrl The API url requesting against
+        * @param contentType Optional
+        * @param contentMD5 Optional
+        * @param nepApplicationKey Optional
+        * @param nepCorrelationId Optional
+        * @param nepOrganization A user's organization
+        * @param nepServiceVersion Optional
+        * @return sharedKey:hmac
+        */
         public static string CreateHMAC(
             string sharedKey,
             string secretKey,
@@ -71,6 +89,12 @@ namespace SendPost
             return accessKey;
         }
 
+        /**
+        * The method to build the POST request
+        * @param secretKey  A user's Secret Key
+        * @param sharedKey A user's Shared Key
+        * @param nepOrganization A user's organization
+        */
         public static void callPost(
             String secretKey, 
             String sharedKey, 

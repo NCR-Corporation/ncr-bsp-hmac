@@ -9,6 +9,11 @@ import java.util.Date;
 import java.util.TimeZone;
 
 public class SendPost extends HmacGenerator{
+
+    /**
+     * Main
+     * @param args
+     */
     public static void main(String[] args){
         try{
             SendPost.callPost("INSERT_SECRET", "INSERT_SHARED", "INSERT_ORGANIZATION");
@@ -18,6 +23,17 @@ public class SendPost extends HmacGenerator{
         }
     }
     
+    /**
+     * The method to build the POST request
+     * @param secretKey  A user's Secret Key
+     * @param sharedKey A user's Shared Key
+     * @param nepOrganization A user's organization
+     * @throws NoSuchAlgorithmException
+     * @throws MalformedURLException
+     * @throws IOException
+     * @throws ProtocolException
+     * @throws InvalidKeyException
+     */
     public static void callPost(String secretKey, String sharedKey, String nepOrganization) throws NoSuchAlgorithmException, MalformedURLException, IOException, ProtocolException, InvalidKeyException{
         String url = "https://gateway-staging.ncrcloud.com/site/sites/find-by-criteria?pageNumber=0&pageSize=10";
         String httpMethod = "POST";

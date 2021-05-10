@@ -8,9 +8,30 @@ import javax.crypto.Mac;
 import javax.crypto.SecretKey;
 import javax.crypto.spec.SecretKeySpec;
 
+/**
+ * A helper class that generates an HMAC token created with
+ * the parameters being passed into the call.
+ */
+
 public class HmacGenerator {
     private static final String HMAC_SHA512 = "HmacSHA512";
 
+    /**
+     * @param sharedKey  A user's Shared Key
+     * @param secretKey A user's Secret Key
+     * @param date An unformated date string
+     * @param httpMethod GET/POST/PUT
+     * @param requestUrl The API url requesting against
+     * @param contentType Optional
+     * @param nepApplicationKey Optional
+     * @param nepCorrelationId Optional
+     * @param nepOrganization A user's organization
+     * @param nepServiceVersion Optional
+     * @return sharedKey:hmac
+     * @throws NoSuchAlgorithmException
+     * @throws MalformedURLException
+     * @throws InvalidKeyException
+     */
     public String generateHmac(
         String sharedKey, 
         String secretKey, 

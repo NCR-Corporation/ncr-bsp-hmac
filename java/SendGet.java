@@ -9,6 +9,10 @@ import java.util.Date;
 import java.util.TimeZone;
 
 public class SendGet extends HmacGenerator{
+    /**
+     * Main
+     * @param args
+     */
     public static void main(String[] args){
         try{
             SendGet.callGet("INSERT_SECRET", "INSERT_SHARED", "INSERT_ORGANIZATION");
@@ -18,6 +22,17 @@ public class SendGet extends HmacGenerator{
         }
     }
     
+    /**
+     * The method to build the GET request
+     * @param secretKey  A user's Secret Key
+     * @param sharedKey A user's Shared Key
+     * @param nepOrganization A user's organization
+     * @throws NoSuchAlgorithmException
+     * @throws MalformedURLException
+     * @throws IOException
+     * @throws ProtocolException
+     * @throws InvalidKeyException
+     */
     public static void callGet(String secretKey, String sharedKey, String nepOrganization) throws NoSuchAlgorithmException, MalformedURLException, IOException, ProtocolException, InvalidKeyException{
         String url = "https://gateway-staging.ncrcloud.com/site/sites/find-nearby/88.05,46.25?radius=10000";
         String httpMethod = "GET";
