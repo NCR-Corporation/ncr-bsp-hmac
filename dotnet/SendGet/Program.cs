@@ -13,7 +13,7 @@ namespace SendGet
         */
         static void Main(string[] args)
         {
-            callGet("INSERT_SECRET","INSERT_SECRET","INSERT_SECRET");
+            callGet("INSERT_SECRET","INSERT_SHARED","INSERT_ORGANIZATION");
         }
 
         /**
