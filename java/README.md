@@ -8,10 +8,10 @@ _This code uses Java 11.0.11_
 
 1. Inside of `SendGet.java` and `SendPost.java` update the `nepOrganization`, `secretKey`, and `sharedKey` with your values:
 
-   ```py
-   secretKey = 'INSERT SECRET'
-   sharedKey = 'INSERT SHARED'
-   nepOrganization = 'INSERT ORGANIZATION'
+   ```java
+   secretKey = 'INSERT_SECRET'
+   sharedKey = 'INSERT_SHARED'
+   nepOrganization = 'INSERT_ORGANIZATION'
    ```
 
 2. Once you have made your changes, be sure to save the files before you compile in the next step.

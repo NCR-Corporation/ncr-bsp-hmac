@@ -6,16 +6,30 @@ The example helper function and the functionality of the request live in `Progra
 
 _This code uses Dotnet 5_
 
-1. Navigate inside the dotnet directory. Once in navigate to the directory of the call you would liek to send.
-2. Inside of `Program.cs`, update the `nepOrganization`, `secretKey`, and `sharedKey` with your values:
+1. Navigate to the directory of the call you would like to send via the command line.
 
-   ```py
-   secretKey = 'INSERT SECRET'
-   sharedKey = 'INSERT SHARED'
-   nepOrganization = 'INSERT ORGANIZATION'
+2. Add the RestSharp API client libray via the command line while inside call directory(this will need to be done for both of the folders containing the calls):
+   ```console
+   $cd SendGet
+   $dotnet add package RestSharp
+   // Adds the package to the SendGet call
    ```
 
-3. To test, Navigate inside of the correct directory and:
+   ```console
+   $cd SendGet
+   $dotnet add package RestSharp
+   // Adds the package to the SendGet call
+   ```
+
+3. Inside of `Program.cs` in the current directory, update the `nepOrganization`, `secretKey`, and `sharedKey` with your values:
+
+   ```C#
+   secretKey = 'INSERT_SECRET'
+   sharedKey = 'INSERT_SHARED'
+   nepOrganization = 'INSERT_ORGANIZATION'
+   ```
+
+4. To test, Navigate inside of the correct directory and:
 
    ```console 
    $ dotnet run
