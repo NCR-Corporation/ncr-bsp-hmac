@@ -52,7 +52,6 @@ public class SendGet extends HmacGenerator{
         format.setTimeZone(TimeZone.getTimeZone("UTC"));
         String gmtDate = format.format(date);
 
-        System.out.println(gmtDate + " GMT");
         connection.setRequestMethod(httpMethod);
         connection.setRequestProperty("Date", gmtDate + " GMT");
         connection.setRequestProperty("Content-Type", contentType);
@@ -64,11 +63,13 @@ public class SendGet extends HmacGenerator{
         BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
         String inputLine;
         StringBuffer content = new StringBuffer();
+        
         while((inputLine = in.readLine()) != null){
             content.append(inputLine);
         }
-        in.close();
+
         System.out.println("{'status': " + status + ", 'data': " + content + "}" );
+        in.close();
         connection.disconnect();
     }
 }

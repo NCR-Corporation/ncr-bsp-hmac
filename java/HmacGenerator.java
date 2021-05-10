@@ -75,7 +75,6 @@ public class HmacGenerator {
 
         byte[] rawHmac = mac.doFinal(toSign.getBytes(StandardCharsets.UTF_8));
         
-        System.out.println(sharedKey + ":" + Base64.getEncoder().encodeToString(rawHmac));
         return sharedKey + ":" + Base64.getEncoder().encodeToString(rawHmac);
     }
 }

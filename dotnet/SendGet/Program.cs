@@ -117,7 +117,7 @@ namespace SendGet
 
             IRestResponse response = client.Execute(request);
 
-            Console.WriteLine(response.Content);
+            Console.WriteLine("{\"status\": " + response.StatusCode + ", \"data\": " + response.Content+ "}");
         }
     }
 }
