@@ -33,7 +33,6 @@ _This code uses Dotnet 5_
 
    ```console 
    $ dotnet run
-   // GET Request to find sites nearby:
    // GET Request to view the first 10 roles in BSP:
    //{ "status": OK }
    //{ "Data": {
