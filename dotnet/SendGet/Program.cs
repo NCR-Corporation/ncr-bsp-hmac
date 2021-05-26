@@ -14,7 +14,7 @@ namespace SendGet
         */
         static void Main(string[] args)
         {
-            callGet("0434e46886a04043bdcf2af4f612ab74", "dbc6f196c2c0455594a64bf380c6f8f2", "74cb645db68647d495136bd79442239b");
+            callGet("INSERT_SECRET", "INSERT_SHARED", "INSERT_ORGANIZATION");
         }
 
         /**
