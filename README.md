@@ -25,7 +25,7 @@ GET /provisioning/user-profiles HTTP/1.1
 Accept: application/json
 Authorization: AccessKey e63ca6a9ca2e4db2bc13b741e7488437:Ysvt4LcqSnmIjvPbolVm2bS/zDXdqnYBtgtG+lWMlLI6uJp1MJiW34OVNtYrYA/B+6T/NDqhqFxbtlvuIFBliw==
 Date: Wed, 26 Jun 2019 17:38:30 GMT
-Host: gateway.ncrplatform.com
+Host: api.ncr.com
 ```
 
 The scheme used in the `Authorization` header is `AccessKey <shared-key>:<hmac>`.
@@ -144,6 +144,6 @@ If you are adding a new language there are some requirements around how it is st
    - An example GET request
    - An example POST request
    
-Visit the `/js` and `/python` folders for examples of these files - the example GET and POST request utilize the Sites API.
+Visit the `/js` and `/python` folders for examples of these files - the example GET and POST request utilize the Security API.
 
 Lastly, be sure to update the main README.md in the [Examples](#examples) section to add a new table element for your new code. 
