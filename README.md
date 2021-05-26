@@ -126,7 +126,7 @@ In this repository we've provided a couple examples in different languages. For 
 To use these functions, you will need your Shared Key, Secret Key, and Organization.
 
 | [JS Examples](https://github.com/NCR-Corporation/ncr-bsp-hmac/tree/main/js) | [Python Examples](https://github.com/NCR-Corporation/ncr-bsp-hmac/tree/main/python) | [PowerShell Examples](https://github.com/NCR-Corporation/ncr-bsp-hmac/tree/main/powershell) | [Go Examples](https://github.com/NCR-Corporation/ncr-bsp-hmac/tree/main/go)
-| --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
+| [Java Examples](https://github.com/NCR-Corporation/ncr-bsp-hmac/tree/main/java) | [Dotnet Examples](https://github.com/NCR-Corporation/ncr-bsp-hmac/tree/main/dotnet) | ------------------------------------------------------------------------------------------- |
 
 ## Support
 

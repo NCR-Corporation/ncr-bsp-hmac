@@ -7,13 +7,14 @@ import java.security.NoSuchAlgorithmException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.TimeZone;
+import javax.script.ScriptException;
 
 public class SendGet extends HmacGenerator{
     /**
      * Main
      * @param args
      */
-    public static void main(String[] args){
+     public static void main(String[] args){
         try{
             SendGet.callGet("INSERT_SECRET", "INSERT_SHARED", "INSERT_ORGANIZATION");
         }
@@ -32,9 +33,10 @@ public class SendGet extends HmacGenerator{
      * @throws IOException
      * @throws ProtocolException
      * @throws InvalidKeyException
+     * @throws ScriptException
      */
-    public static void callGet(String secretKey, String sharedKey, String nepOrganization) throws NoSuchAlgorithmException, MalformedURLException, IOException, ProtocolException, InvalidKeyException{
-        String url = "https://gateway-staging.ncrcloud.com/site/sites/find-nearby/88.05,46.25?radius=10000";
+    public static void callGet(String secretKey, String sharedKey, String nepOrganization) throws NoSuchAlgorithmException, MalformedURLException, IOException, ProtocolException, InvalidKeyException, ScriptException{
+        String url = "https://api.ncr.com/security/roles?roleNamePattern=*&pageNumber=0&pageSize=10";
         String httpMethod = "GET";
         String contentType = "application/json";
 
@@ -58,6 +60,8 @@ public class SendGet extends HmacGenerator{
         connection.setRequestProperty("Authorization", "AccessKey " + hmacAccesskey);
         connection.setRequestProperty("nep-organization", nepOrganization);
         
+        System.out.println(connection.getRequestProperties());
+
         int status = connection.getResponseCode();
 
         BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
@@ -68,9 +72,72 @@ public class SendGet extends HmacGenerator{
             content.append(inputLine);
         }
 
-        System.out.println("{'status': " + status + ", 'data': " + content + "}" );
-        
+        System.out.println("{'status': " + status + " },\n{'data': " + prettyPrintJSON(content.toString()));
         in.close();
         connection.disconnect();
+    }
+
+    /**
+     * A simple implementation to pretty-print JSON file.
+     *
+     * @param unformattedJsonString
+     * @return
+     */
+    public static String prettyPrintJSON(String unformattedJsonString) {
+        StringBuilder prettyJSONBuilder = new StringBuilder();
+        int indentLevel = 0;
+        boolean inQuote = false;
+        for(char charFromUnformattedJson : unformattedJsonString.toCharArray()) {
+        switch(charFromUnformattedJson) {
+            case '"':
+            // switch the quoting status
+            inQuote = !inQuote;
+            prettyJSONBuilder.append(charFromUnformattedJson);
+            break;
+            case ' ':
+            // For space: ignore the space if it is not being quoted.
+            if(inQuote) {
+                prettyJSONBuilder.append(charFromUnformattedJson);
+            }
+            break;
+            case '{':
+            case '[':
+            // Starting a new block: increase the indent level
+            prettyJSONBuilder.append(charFromUnformattedJson);
+            indentLevel++;
+            appendIndentedNewLine(indentLevel, prettyJSONBuilder);
+            break;
+            case '}':
+            case ']':
+            // Ending a new block; decrese the indent level
+            indentLevel--;
+            appendIndentedNewLine(indentLevel, prettyJSONBuilder);
+            prettyJSONBuilder.append(charFromUnformattedJson);
+            break;
+            case ',':
+            // Ending a json item; create a new line after
+            prettyJSONBuilder.append(charFromUnformattedJson);
+            if(!inQuote) {
+                appendIndentedNewLine(indentLevel, prettyJSONBuilder);
+            }
+            break;
+            default:
+            prettyJSONBuilder.append(charFromUnformattedJson);
+        }
+        }
+        return prettyJSONBuilder.toString();
+    }
+    
+    /**
+     * Print a new line with indention at the beginning of the new line.
+     * @param indentLevel
+     * @param stringBuilder
+     */
+    private static void appendIndentedNewLine(int indentLevel, StringBuilder stringBuilder) {
+        stringBuilder.append("\n");
+        for(int i = 0; i < indentLevel; i++) {
+        // Assuming indention using 2 spaces
+        stringBuilder.append("  ");
+        }
     }
 }

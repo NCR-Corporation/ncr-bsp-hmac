@@ -1,16 +1,17 @@
 from hmacHelper import hmacHelper
 from datetime import datetime
 from datetime import timezone
+import json
 import requests
 
 
 def exampleGet(secretKey="INSERT_SECRET", sharedKey="INSERT_SHARED", nepOrganization="INSERT_ORGANIZATION"):
-
+    
     now = datetime.now(tz=timezone.utc)
     now = datetime(now.year, now.month, now.day, hour=now.hour,
                    minute=now.minute, second=now.second)
 
-    requestURL = "https://gateway-staging.ncrcloud.com/site/sites/find-nearby/88.05,46.25?radius=10000"
+    requestURL = "https://api.ncr.com/security/roles?roleNamePattern=*&pageNumber=0&pageSize=10"
     httpMethod = 'GET'
     contentType = 'application/json'
 
@@ -31,7 +32,8 @@ def exampleGet(secretKey="INSERT_SECRET", sharedKey="INSERT_SHARED", nepOrganiza
     res['status'] = request.status_code
     res['data'] = request.json()
 
-    print(res)
+    json_formatted = json.dumps(res, indent=2)
+    print(json_formatted)
 
     return res
 
