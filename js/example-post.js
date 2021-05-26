@@ -11,7 +11,7 @@ async function examplePost(secretKey, sharedKey, nepOrganization) {
     sharedKey,
     nepOrganization,
     requestURL:
-      "https://gateway-staging.ncrcloud.com/site/sites/find-by-criteria?pageNumber=0&pageSize=200",
+      "https://api.ncr.com/security/authorization",
     httpMethod: "POST",
     contentType: "application/json",
   };
