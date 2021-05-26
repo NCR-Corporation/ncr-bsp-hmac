@@ -4,7 +4,7 @@ $sharedKey = "INSERT SHARED KEY"
 $secretKey = "INSERT SECRET KEY"
 $organization = "INSERT ORGANIZATION"
 
-$url = "https://api.ncr.com/site/sites/find-by-criteria?pageNumber=0&pageSize=10"
+$url = "https://api.ncr.com/security/authorization"
 $now = Get-Date
 
 $accessKey = Get-AccessKey -sharedKey $sharedKey `

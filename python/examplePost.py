@@ -6,12 +6,12 @@ import json
 
 
 def examplePost(secretKey="INSERT_SECRET", sharedKey="INSERT_SHARED", nepOrganization="INSERT_ORGANIZATION"):
-
+    
     now = datetime.now(tz=timezone.utc)
     now = datetime(now.year, now.month, now.day, hour=now.hour,
                    minute=now.minute, second=now.second)
 
-    requestURL = "https://gateway-staging.ncrcloud.com/site/sites/find-by-criteria?pageNumber=0&pageSize=10"
+    requestURL = "https://api.ncr.com/security/authentication/login"
     httpMethod = 'POST'
     contentType = 'application/json'
 
@@ -27,7 +27,6 @@ def examplePost(secretKey="INSERT_SECRET", sharedKey="INSERT_SHARED", nepOrganiz
     }
 
     data = {
-        "sort": [{"column": "siteName", "direction": "asc"}]
     }
 
     payload = json.dumps(data)
@@ -38,7 +37,8 @@ def examplePost(secretKey="INSERT_SECRET", sharedKey="INSERT_SHARED", nepOrganiz
     res['status'] = request.status_code
     res['data'] = request.json()
 
-    print(res)
+    json_formatted = json.dumps(res, indent=2)
+    print(json_formatted)
 
     return res
 

@@ -10,7 +10,7 @@ async function exampleGet(secretKey, sharedKey, nepOrganization) {
     sharedKey,
     nepOrganization,
     requestURL:
-      "https://gateway-staging.ncrcloud.com/site/sites/find-nearby/88.05,46.25?radius=10000",
+      "https://api.ncr.com/security/roles?roleNamePattern=*&pageNumber=0&pageSize=10",
     httpMethod: "GET",
     contentType: "application/json",
   };

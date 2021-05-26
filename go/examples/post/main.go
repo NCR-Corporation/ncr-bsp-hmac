@@ -21,7 +21,7 @@ type siteCriteriaSort struct {
 }
 
 func main() {
-	url := "https://gateway-staging.ncrcloud.com/site/sites/find-by-criteria?pageNumber=0&pageSize=200"
+	url := "https://api.ncr.com/security/authorization"
 	criteria := &searchCriteria{
 		SortCriteria: []*siteCriteriaSort{
 			{Column: "siteName", Direction: "asc"},

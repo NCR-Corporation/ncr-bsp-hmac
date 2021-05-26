@@ -45,7 +45,12 @@ public class HmacGenerator {
         String nepServiceVersion) throws NoSuchAlgorithmException, MalformedURLException, InvalidKeyException 
     {
         URL url = new URL(requestUrl);
-        String path = url.getPath() + "?" + url.getQuery();
+
+        String path = url.getPath();
+
+        if(url.getQuery() != null && !url.getQuery().isEmpty()){
+            path += "?" + url.getQuery();
+        }
 
         String isoDate = date + ".000Z";
         

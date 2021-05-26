@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Security.Cryptography;
 using System.Text;
+using System.Text.Json;
 using RestSharp;
 
 namespace SendGet
@@ -13,7 +14,7 @@ namespace SendGet
         */
         static void Main(string[] args)
         {
-            callGet("INSERT_SECRET","INSERT_SHARED","INSERT_ORGANIZATION");
+            callGet("0434e46886a04043bdcf2af4f612ab74", "dbc6f196c2c0455594a64bf380c6f8f2", "74cb645db68647d495136bd79442239b");
         }
 
         /**
@@ -97,7 +98,7 @@ namespace SendGet
         * @param nepOrganization A user's organization
         */
         public static void callGet(String secretKey, String sharedKey, String nepOrganization){
-            String url = "https://gateway-staging.ncrcloud.com/site/sites/find-nearby/88.05,46.25?radius=10000";
+            String url = "https://api.ncr.com/security/roles?roleNamePattern=*&pageNumber=0&pageSize=10";
             String httpMethod = "GET";
             String contentType = "application/json";
             DateTime utcDate = DateTime.UtcNow;
@@ -109,13 +110,21 @@ namespace SendGet
             var gmtDate = utcDate.DayOfWeek.ToString().Substring(0,3) + ", " + utcDate.ToString("dd MMM yyyy HH:mm:ss") + " GMT";
 
             request.AddHeader("nep-organization", nepOrganization);
-            request.AddHeader("content-type", "application/json");
+            request.AddHeader("content-type", contentType);
             request.AddHeader("date", gmtDate);
             request.AddHeader("authorization", "AccessKey " + hmacAccessKey);
 
             IRestResponse response = client.Execute(request);
 
-            Console.WriteLine("{\"status\": " + response.StatusCode + ", \"data\": " + response.Content+ "}");
+            var responseContent = JsonSerializer.Deserialize<ContentModel>(response.Content);
+            
+            var options = new JsonSerializerOptions(){
+                WriteIndented = true
+            };
+
+            var formattedJSON = JsonSerializer.Serialize(responseContent, options);    
+
+            Console.WriteLine("{ \"status\": " + response.StatusCode + " }\n{ \"Data\": \n" + formattedJSON + "\n}");
         }
     }
 }
