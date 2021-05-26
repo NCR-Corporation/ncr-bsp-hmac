@@ -2,6 +2,8 @@
 using System.Security.Cryptography;
 using System.Text;
 using RestSharp;
+using System.Text.Json;
+using SendPost;
 
 namespace SendPost
 {
@@ -13,7 +15,7 @@ namespace SendPost
         */
         static void Main(string[] args)
         {
-            callPost("INSERT_SECRET","INSERT_SHARED","INSERT_ORGANIZATION");
+            callPost("0434e46886a04043bdcf2af4f612ab74", "dbc6f196c2c0455594a64bf380c6f8f2", "74cb645db68647d495136bd79442239b");
         }
 
         /**
@@ -101,7 +103,7 @@ namespace SendPost
             String nepOrganization)
         {
             DateTime utcDate = DateTime.UtcNow;
-            String url = "https://gateway-staging.ncrcloud.com/site/sites/find-by-criteria?pageNumber=0&pageSize=10";
+            String url = "https://api.ncr.com/security/authorization";
             String httpMethod = "POST";
             String contentType = "application/json";
             String hmacAccessKey = CreateHMAC(sharedKey, secretKey, DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss"), httpMethod, url, contentType, "", "", "", nepOrganization, "");
@@ -111,14 +113,20 @@ namespace SendPost
             var gmtDate = utcDate.DayOfWeek.ToString().Substring(0,3) + ", " + utcDate.ToString("dd MMM yyyy HH:mm:ss") + " GMT";
 
             request.AddHeader("nep-organization", nepOrganization);
-            request.AddHeader("content-type", "application/json");
+            request.AddHeader("content-type", contentType);
             request.AddHeader("date", gmtDate);
             request.AddHeader("authorization", "AccessKey " + hmacAccessKey);
-            request.AddParameter("undefined", "{\"sort\":[{\"column\":\"siteName\",\"direction\":\"asc\"}]}", ParameterType.RequestBody);
 
             IRestResponse response = client.Execute(request);
 
-            Console.WriteLine("{\"status\": " + response.StatusCode + ", \"data\": " + response.Content+ "}");
+            var responseContent = JsonSerializer.Deserialize<ContentModel>(response.Content);
+            var options = new JsonSerializerOptions(){
+                WriteIndented = true
+            };
+
+            var formattedJSON = JsonSerializer.Serialize(responseContent, options);    
+
+            Console.WriteLine("{ \"status\": " + response.StatusCode + " }\n{ \"Data\": \n" + formattedJSON + "\n}");
         }
     }
 }
