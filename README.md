@@ -151,3 +151,7 @@ If you are adding a new language there are some requirements around how it is st
 Visit the `/js` and `/python` folders for examples of these files - the example GET and POST request utilize the Security API.
 
 Lastly, be sure to update the main README.md in the [Examples](#examples) section to add a new table element for your new code.
+
+## License
+
+This project is released under the Apache 2.0 license. The license's full text can be found [here](https://github.com/NCR-Corporation/ncr-bsp-hmac/blob/main/LICENSE).
