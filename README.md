@@ -8,7 +8,8 @@
 2. [Advantages](#advantages)
 3. [Implementation](#implementation)
 4. [Examples](#examples)
-5. [Contributing](#contributing)
+5. [Support](#support)
+6. [Contributing](#contributing)
 
 <a name="introduction"></a>
 
@@ -132,18 +133,22 @@ To use these functions, you will need your Shared Key, Secret Key, and Organizat
 
 Feel free to open an issue to ask questions or if any issues are found.
 
+Looking for a new language? We highly recommend following the [contributing](#contributing) guide to add it in. We encourage and appreciate any new additions to the repo.
+
+Otherwise, feel free to create a ticket with the request.
+
 ## Contributing
 
-Hey! Thanks for contributing to this repository to help it become even better. 
+Thank you for contributing to this repository to help it become even better.
 
 If you are adding a new language there are some requirements around how it is structure:
 
-1. All code should be contained in the language specific folder (unless otherwise required as a dependency)
+1. All code should be contained in the language specific folder.
 2. Every language specific folder should include:
    - A README.md with instructions on how to use the code
    - An example GET request
    - An example POST request
-   
+
 Visit the `/js` and `/python` folders for examples of these files - the example GET and POST request utilize the Security API.
 
-Lastly, be sure to update the main README.md in the [Examples](#examples) section to add a new table element for your new code. 
+Lastly, be sure to update the main README.md in the [Examples](#examples) section to add a new table element for your new code.
