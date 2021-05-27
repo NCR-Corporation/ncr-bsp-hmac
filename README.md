@@ -152,6 +152,8 @@ Visit the `/js` and `/python` folders for examples of these files - the example 
 
 Lastly, be sure to update the main README.md in the [Examples](#examples) section to add a new table element for your new code.
 
+Check out our [Contribution](CONTRIBUTING.md) guide for more details.
+
 ## License
 
 This project is released under the Apache 2.0 license. The license's full text can be found [here](https://github.com/NCR-Corporation/ncr-bsp-hmac/blob/main/LICENSE).
