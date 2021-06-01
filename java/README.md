@@ -1,6 +1,6 @@
 # HMAC Java Examples
 
-The example helper function lives in `HmacGenerator.java` which contains the details on how to use HMAC to generate an `AccessKey`
+The example helper function lives in the `generateHmac` method which contains the details on how to use HMAC to generate an `AccessKey`
 
 ### Getting Started
 
@@ -31,7 +31,7 @@ _This code uses Java 11.0.11_
 4. To test:
 
    ```console
-   $ java SendGet
+   $ java SendGet.java
    // GET Request to view the first 10 roles in BSP:
    //{ "status": OK }
    //{ "Data": {
@@ -54,7 +54,7 @@ _This code uses Java 11.0.11_
    ```
 
    ```console
-   $ java SendPost
+   $ java SendPost.java
    // POST Request gain an access token
    //{ "status": OK }
    //{ "Data": 
