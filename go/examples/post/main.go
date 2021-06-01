@@ -3,7 +3,6 @@ package main
 import (
 	"bytes"
 	"encoding/json"
-	"fmt"
 	"io/ioutil"
 	"log"
 	"net/http"
@@ -54,5 +53,14 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	fmt.Printf("%s\n", b)
+
+	var prettyJson bytes.Buffer
+	error := json.Indent(&prettyJson, b, "", "\t")
+	if error != nil {
+		log.Println("JSON parse error: ", error)
+
+		return
+	}
+
+	log.Println(string(prettyJson.Bytes()))
 }

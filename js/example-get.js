@@ -30,10 +30,11 @@ async function exampleGet(secretKey, sharedKey, nepOrganization) {
 
   const response = await fetch(options.requestURL, requestOptions);
   const data = await response.json();
+  let dataString = JSON.stringify(data, null, 4)
 
   return {
     status: response.status,
-    data,
+    dataString,
   };
 }
 
