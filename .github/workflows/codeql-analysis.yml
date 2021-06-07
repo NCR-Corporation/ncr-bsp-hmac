@@ -62,12 +62,17 @@ jobs:
     # ✏️ If the Autobuild fails above, remove it and uncomment the following three lines
     #    and modify them (or add more) to build your code if your project
     #    uses a compiled language
-    - if: matrix.language == 'java' 
+    - if: matrix.language == 'cpp' || matrix.language == 'csharp' 
+      name: Autobuild
+      uses: github/codeql-action/autobuild@v1
+      
+    - if: matrix.language == 'java'
+      
       name: Build Java
       run: |
         cd java
-        make bootstrap
-        make release
+        javac SendGet.java
+        javac SendPost.java
     #- run: |
     #   make bootstrap
     #   make release
