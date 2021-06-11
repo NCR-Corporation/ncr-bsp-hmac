@@ -11,8 +11,7 @@ if ($env:SHARED_KEY -And  $env:SECRET_KEY -And $env:ORGANIZATION) {
 }
 
 $url = "https://api.ncr.com/security/roles?roleNamePattern=*&pageNumber=0&pageSize=10"
-$now = Get-Date
-echo $now
+$now = Get-Date -UFormat "%A, %B %e, %Y %r"
 
 $accessKey = Get-AccessKey -sharedKey $sharedKey `
     -secretKey $secretKey `
