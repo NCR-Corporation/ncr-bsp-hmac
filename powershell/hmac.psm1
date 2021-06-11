@@ -28,7 +28,11 @@ Function Get-AccessKey {
     Process {
         $uri = ([System.Uri] $url).PathAndQuery
         
-        $nowGmt = [System.TimeZoneInfo]::ConvertTimeBySystemTimeZoneId($date, 'Greenwich Standard Time')
+        try {
+            $nowGmt = [System.TimeZoneInfo]::ConvertTimeBySystemTimeZoneId($date, 'Greenwich Standard Time')
+        } catch {
+            $nowGmt = [System.TimeZoneInfo]::ConvertTimeBySystemTimeZoneId($date, 'Africa/Bissau')
+        }
         $iso8601 = $nowGmt.ToString("yyyy-MM-ddTHH:mm:ss") + ".000Z"
 
         $signableContent = @($httpMethod, $uri, 'application/json', $organization)
