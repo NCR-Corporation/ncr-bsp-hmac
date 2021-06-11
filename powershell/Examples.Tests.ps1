@@ -1,7 +1,7 @@
 Describe "API validation" {
     BeforeAll {
-        $getResponse = . .\Example-Get.ps1
-        $postResponse = . .\Example-Post.ps1
+        $getResponse = .\Example-Get.ps1
+        $postResponse = .\Example-Post.ps1
     }
 
     It "GET response status code = '200'" {
