@@ -11,7 +11,7 @@ if ($env:SHARED_KEY -And  $env:SECRET_KEY -And $env:ORGANIZATION) {
 }
 
 $url = "https://api.ncr.com/security/authorization"
-$now = Get-Date -UFormat "%A, %B %e, %Y %r"
+$now = Get-Date -UFormat "%A, %B %e, %Y %I:%M:%S %p"
 
 $accessKey = Get-AccessKey -sharedKey $sharedKey `
     -secretKey $secretKey `
