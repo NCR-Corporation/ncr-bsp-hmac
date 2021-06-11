@@ -4,7 +4,7 @@ The example helper function lives in `hmac.psm1` which contains the HMAC `Access
 
 ### Getting Started
 
-1. Inside of `example-get.ps1` and `example-post.ps1` update the `$organization`, `$secretKey`, and `$sharedKey` with your values:
+1. Inside of `Example-Get.ps1` and `Example-Post.ps1` update the `$organization`, `$secretKey`, and `$sharedKey` with your values:
 
    ```powershell
    $secretKey = 'INSERT SECRET KEY'
@@ -15,7 +15,7 @@ The example helper function lives in `hmac.psm1` which contains the HMAC `Access
 2. To test:
 
    ```console
-   PS C:\ncr-bsp-hmac\powershell> .\example-get.ps1
+   PS C:\ncr-bsp-hmac\powershell> .\Example-Get.ps1
    // GET Request to view the first 10 roles in BSP:
    //{ "status": OK }
    //{ "Data": {
@@ -38,11 +38,11 @@ The example helper function lives in `hmac.psm1` which contains the HMAC `Access
    ```
 
    ```console
-   PS C:\ncr-bsp-hmac\powershell> .\example-post.ps1
+   PS C:\ncr-bsp-hmac\powershell> .\Example-Post.ps1
 
    // POST Request gain an access token
    //{ "status": OK }
-   //{ "Data": 
+   //{ "Data":
    //   {
    //      "token": "{{YOUR_TOKEN}}}",
    //      "maxIdleTime": 900,
@@ -66,4 +66,3 @@ The example helper function lives in `hmac.psm1` which contains the HMAC `Access
    //   }
    //}
    ```
-

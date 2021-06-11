@@ -4,6 +4,12 @@ $sharedKey = "INSERT SHARED KEY"
 $secretKey = "INSERT SECRET KEY"
 $organization = "INSERT ORGANIZATION"
 
+if ($env:SHARED_KEY -And  $env:SECRET_KEY -And $env:ORGANIZATION) {
+    $sharedKey = $env:SHARED_KEY
+    $secretKey = $env:SECRET_KEY
+    $organization = $env:ORGANIZATION
+}
+
 $url = "https://api.ncr.com/security/authorization"
 $now = Get-Date
 
@@ -29,7 +35,8 @@ try {
         -Headers $headers `
         -Body $body
         
-    Write-Output $resp.Content
+    $resp.Content
+    return $resp
 } catch [System.SystemException] {
     Write-Warning "Exception $_" 
     Write-Warning $_.ScriptStackTrace
