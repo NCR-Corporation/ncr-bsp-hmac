@@ -1,0 +1,22 @@
+name: Test PowerShell on Ubuntu
+on:
+  push:
+    branches: [ main ]
+  pull_request_target:
+    branches: [ main ]
+
+jobs:
+  pester-test:
+    name: Pester test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v2
+      - name: Perform a Pester test from the Examples.Tests.ps1 file
+        shell: pwsh
+        run: |
+          cd powershell && Invoke-Pester
+        env:
+          SECRET_KEY: ${{ secrets.SECRET_KEY }}
+          SHARED_KEY: ${{ secrets.SHARED_KEY }}
+          ORGANIZATION: ${{ secrets.ORGANIZATION }}
