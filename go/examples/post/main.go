@@ -8,6 +8,7 @@ import (
 	"log"
 	"net/http"
 	"time"
+	"os"
 
 	"github.com/NCR-Corporation/ncr-bsp-hmac/go/sign"
 )
@@ -20,7 +21,7 @@ type siteCriteriaSort struct {
 	Direction string `json:"direction,omitempty"`
 }
 
-func main() {
+func post() int {
 	url := "https://api.ncr.com/security/authorization"
 	criteria := &searchCriteria{
 		SortCriteria: []*siteCriteriaSort{
@@ -32,14 +33,24 @@ func main() {
 		log.Fatal(err)
 	}
 	req, _ := http.NewRequest("POST", url, bytes.NewReader(b))
+	// Replace the string with your organization.
+	nepOrganization := "INSERT_ORGANIZATION";
+	// Replace the empty string with your shared key
+	sharedKey := "INSERT_SHARED_KEY"
+	// Replace the empty string with your secret key
+	secretKey := "INSERT_SECRET_KEY"
+
+	// For tests, feel free to remove.
+	if _, ok := os.LookupEnv("GITHUB_ACTION"); ok {
+		nepOrganization = os.Getenv("ORGANIZATION");
+		sharedKey = os.Getenv("SHARED_KEY");
+		secretKey = os.Getenv("SECRET_KEY");
+	}
+
 	req.Header.Add("Date", time.Now().UTC().Format(http.TimeFormat))
-	req.Header.Add("nep-organization", "")
+	req.Header.Add("nep-organization", nepOrganization)
 	req.Header.Add("Content-Type", "application/json")
 
-	// Replace the empty string with your shared key
-	sharedKey := ""
-	// Replace the empty string with your secret key
-	secretKey := ""
 	s, _ := sign.NewAccessKeyHTTPSigner(sharedKey, secretKey)
 	req, err = s.Sign(req)
 	if err != nil {
@@ -55,4 +66,9 @@ func main() {
 		log.Fatal(err)
 	}
 	fmt.Printf("%s\n", b)
+	return int(res.StatusCode)
+}
+
+func main() {
+	post()
 }
