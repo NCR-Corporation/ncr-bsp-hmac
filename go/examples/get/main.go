@@ -12,9 +12,6 @@ import (
 	"github.com/NCR-Corporation/ncr-bsp-hmac/go/sign"
 )
 
-// $sharedKey = "2129ffe8f58743758056edc814d67f4e"
-// $secretKey = "0a92503074b64a1faf1d3cf16b2d0638"
-// $organization = "8133687b23e84b2ea8dd267d8a519e89"
 func get() int {
 	url := "https://api.ncr.com/security/roles?roleNamePattern=*&pageNumber=0&pageSize=10"
 	req, _ := http.NewRequest("GET", url, strings.NewReader(""))
