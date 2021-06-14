@@ -10,6 +10,7 @@ public class SendHMACTest {
 	public void testSendGet() {
 		Integer status;
 		try {
+			System.out.println(Sytem.getenv("SECRET_KEY"));
 			status = SendGet.callGet(System.getenv("SECRET_KEY"), System.getenv("SHARED_KEY"),
 					System.getenv("ORGANIZATIOn"));
 		} catch (Exception e) {
@@ -24,6 +25,7 @@ public class SendHMACTest {
 	public void testSendPost() {
 		Integer status;
 		try {
+			System.out.println(Sytem.getenv("SHARED_KEY"));
 			status = SendGet.callGet(System.getenv("SECRET_KEY"), System.getenv("SHARED_KEY"),
 					System.getenv("ORGANIZATIOn"));
 		} catch (Exception e) {
