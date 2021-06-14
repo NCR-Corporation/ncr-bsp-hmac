@@ -70,7 +70,7 @@ jobs:
       
       name: Build Java
       run: |
-        cd java
+        cd java/src/main/java
         javac SendGet.java
         javac SendPost.java
     #- run: |
