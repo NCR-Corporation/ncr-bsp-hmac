@@ -16,7 +16,7 @@ public class SendHMACTest {
 			e.printStackTrace();
 			status = 500;
 		}
-		assertEquals(status, 200);
+		assertEquals(200, status);
 	}
 
 	@Test
@@ -30,6 +30,6 @@ public class SendHMACTest {
 			e.printStackTrace();
 			status = 500;
 		}
-		assertEquals(status, 200);
+		assertEquals(200, status);
 	}
 }

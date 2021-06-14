@@ -6,6 +6,7 @@ The example helper function lives in `HmacGenerator.java` which contains the det
 
 _This code uses Java 11.0.11_
 
+1. All files are inside of `src/main/java`.
 1. Inside of `SendGet.java` and `SendPost.java` update the `nepOrganization`, `secretKey`, and `sharedKey` with your values:
 
    ```java
@@ -14,9 +15,13 @@ _This code uses Java 11.0.11_
    nepOrganization = 'INSERT_ORGANIZATION'
    ```
 
-2. Once you have made your changes, be sure to save the files before you compile in the next step.
+1. Once you have made your changes, be sure to save the files before you compile in the next step.
 
-3. Compile the two request classes inside of the java directory:
+1. Compile the two request classes inside of the java directory:
+
+   ```console
+   $ cd java/src/main/java
+   ```
 
    ```console
    $ javac SendGet.java
@@ -28,7 +33,7 @@ _This code uses Java 11.0.11_
    // Compiles and creates the class for the POST API call
    ```
 
-4. To test:
+1. To test:
 
    ```console
    $ java SendGet
@@ -57,7 +62,7 @@ _This code uses Java 11.0.11_
    $ java SendPost
    // POST Request gain an access token
    //{ "status": OK }
-   //{ "Data": 
+   //{ "Data":
    //   {
    //      "token": "{{YOUR_TOKEN}}}",
    //      "maxIdleTime": 900,
