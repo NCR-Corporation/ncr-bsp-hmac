@@ -1,5 +1,4 @@
 
-
 import java.net.*;
 import java.io.*;
 import java.net.HttpURLConnection;
@@ -19,8 +18,7 @@ public class SendPost extends HmacGenerator {
      */
     public static void main(String[] args) {
         try {
-        	SendGet.callGet("0a92503074b64a1faf1d3cf16b2d0638", "2129ffe8f58743758056edc814d67f4e",
-                    "8133687b23e84b2ea8dd267d8a519e89");
+            SendPost.callPost("INSERT_SECRET", "INSERT_SHARED", "INSERT_ORGANIZATION");
         } catch (Exception e) {
             e.printStackTrace();
         }
