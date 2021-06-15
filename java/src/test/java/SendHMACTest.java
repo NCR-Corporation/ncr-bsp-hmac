@@ -10,6 +10,7 @@ public class SendHMACTest {
 	public void testSendGet() {
 		Integer status;
 		try {
+			System.out.println("HERE ======");
 			System.out.println(System.getenv("SECRET_KEY"));
 			status = SendGet.callGet(System.getenv("SECRET_KEY"), System.getenv("SHARED_KEY"),
 					System.getenv("ORGANIZATIOn"));
