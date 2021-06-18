@@ -1,6 +1,6 @@
 # NCR Business Services Platform HMAC
 
-[![Python Tests](https://github.com/NCR-Corporation/ncr-bsp-hmac/actions/workflows/python-app.yml/badge.svg)](https://github.com/NCR-Corporation/ncr-bsp-hmac/actions/workflows/python-app.yml)
+[![Python Tests](https://github.com/NCR-Corporation/ncr-bsp-hmac/actions/workflows/python-app.yml/badge.svg)](https://github.com/NCR-Corporation/ncr-bsp-hmac/actions/workflows/python-app.yml) [![Java Tests](https://github.com/NCR-Corporation/ncr-bsp-hmac/actions/workflows/java-app.yml/badge.svg)](https://github.com/NCR-Corporation/ncr-bsp-hmac/actions/workflows/java-app.yml)
 
 ### Table of Contents
 
