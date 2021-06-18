@@ -13,7 +13,7 @@ public class SendHMACTest {
 			System.out.println("HERE ======");
 			System.out.println(System.getenv("SECRET_KEY"));
 			status = SendGet.callGet(System.getenv("SECRET_KEY"), System.getenv("SHARED_KEY"),
-					System.getenv("ORGANIZATIOn"));
+					System.getenv("ORGANIZATION"));
 		} catch (Exception e) {
 			e.printStackTrace();
 			status = 500;
@@ -28,7 +28,7 @@ public class SendHMACTest {
 		try {
 			System.out.println(System.getenv("SHARED_KEY"));
 			status = SendGet.callGet(System.getenv("SECRET_KEY"), System.getenv("SHARED_KEY"),
-					System.getenv("ORGANIZATIOn"));
+					System.getenv("ORGANIZATION"));
 		} catch (Exception e) {
 			e.printStackTrace();
 			status = 500;
