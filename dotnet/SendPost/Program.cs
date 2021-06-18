@@ -6,7 +6,7 @@ using System.Text.Json;
 
 namespace SendPost
 {
-    class Program
+    public class Program
     {
         /**
         *Main
@@ -96,7 +96,7 @@ namespace SendPost
         * @param sharedKey A user's Shared Key
         * @param nepOrganization A user's organization
         */
-        public static void callPost(
+        public static int callPost(
             String secretKey, 
             String sharedKey, 
             String nepOrganization)
@@ -126,6 +126,7 @@ namespace SendPost
             var formattedJSON = JsonSerializer.Serialize(responseContent, options);    
 
             Console.WriteLine("{ \"status\": " + response.StatusCode + " }\n{ \"Data\": \n" + formattedJSON + "\n}");
+			return (int) response.StatusCode;
         }
     }
 }
