@@ -6,7 +6,7 @@ using RestSharp;
 
 namespace SendGet
 {
-    class Program
+    public class Program
     {
         /**
         * Main
@@ -97,7 +97,7 @@ namespace SendGet
         * @param sharedKey A user's Shared Key
         * @param nepOrganization A user's organization
         */
-        public static void callGet(String secretKey, String sharedKey, String nepOrganization){
+        public static int callGet(String secretKey, String sharedKey, String nepOrganization){
             String url = "https://api.ncr.com/security/roles?roleNamePattern=*&pageNumber=0&pageSize=10";
             String httpMethod = "GET";
             String contentType = "application/json";
@@ -125,6 +125,7 @@ namespace SendGet
             var formattedJSON = JsonSerializer.Serialize(responseContent, options);    
 
             Console.WriteLine("{ \"status\": " + response.StatusCode + " }\n{ \"Data\": \n" + formattedJSON + "\n}");
+			return (int) response.StatusCode;
         }
     }
 }

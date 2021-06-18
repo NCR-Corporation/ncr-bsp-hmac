@@ -3,3 +3,7 @@ js/node_modules/*
 node_modules/
 
 __pycache__/
+dotnet/*/bin/*
+dotnet/*/obj/*
+*.vs
+dotnet/.idea/*

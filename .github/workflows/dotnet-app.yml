@@ -1,0 +1,30 @@
+name: Dotnet Tests
+
+on:
+  push:
+    branches: [ main ]
+  pull_request_target:
+    branches: [ main ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        dotnet-version: ['3.0', '3.1.x', '5.0.x' ]
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup .NET Core SDK ${{ matrix.dotnet-version }}
+        uses: actions/setup-dotnet@v1.7.2
+        with:
+          dotnet-version: ${{ matrix.dotnet-version }}
+      - name: Install dependencies
+        run: cd dotnet/SendHMACTest && dotnet restore
+      - name: Test
+        run: dotnet test --no-restore --verbosity normal
+        env:
+          SECRET_KEY: ${{ secrets.SECRET_KEY }}
+          SHARED_KEY: ${{ secrets.SHARED_KEY }}
+          ORGANIZATION: ${{ secrets.ORGANIZATION }}
