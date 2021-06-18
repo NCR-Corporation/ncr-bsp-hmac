@@ -1,6 +1,6 @@
 # NCR Business Services Platform HMAC
 
-[![Python Tests](https://github.com/NCR-Corporation/ncr-bsp-hmac/actions/workflows/python-app.yml/badge.svg)](https://github.com/NCR-Corporation/ncr-bsp-hmac/actions/workflows/python-app.yml) [![Java Tests](https://github.com/NCR-Corporation/ncr-bsp-hmac/actions/workflows/java-app.yml/badge.svg)](https://github.com/NCR-Corporation/ncr-bsp-hmac/actions/workflows/java-app.yml)
+[![Python Tests](https://github.com/NCR-Corporation/ncr-bsp-hmac/actions/workflows/python-app.yml/badge.svg)](https://github.com/NCR-Corporation/ncr-bsp-hmac/actions/workflows/python-app.yml) [![Java Tests](https://github.com/NCR-Corporation/ncr-bsp-hmac/actions/workflows/java-app.yml/badge.svg)](https://github.com/NCR-Corporation/ncr-bsp-hmac/actions/workflows/java-app.yml) [![JS Tests](https://github.com/NCR-Corporation/ncr-bsp-hmac/actions/workflows/js-app.yml/badge.svg)](https://github.com/NCR-Corporation/ncr-bsp-hmac/actions/workflows/js-app.yml) [![Go Tests](https://github.com/NCR-Corporation/ncr-bsp-hmac/actions/workflows/go.yml/badge.svg)](https://github.com/NCR-Corporation/ncr-bsp-hmac/actions/workflows/go.yml) [![Powershell Tests](https://github.com/NCR-Corporation/ncr-bsp-hmac/actions/workflows/powershell-app.yml/badge.svg)](https://github.com/NCR-Corporation/ncr-bsp-hmac/actions/workflows/powershell-app.yml) [![CodeQL](https://github.com/NCR-Corporation/ncr-bsp-hmac/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/NCR-Corporation/ncr-bsp-hmac/actions/workflows/codeql-analysis.yml)
 
 ### Table of Contents
 
