@@ -147,12 +147,16 @@ If you are adding a new language there are some requirements around how it is st
    - A README.md with instructions on how to use the code
    - An example GET request
    - An example POST request
+   - A test file that can be run with Github Actions (visit `.github/workflows/` for examples)
 
 Visit the `/js` and `/python` folders for examples of these files - the example GET and POST request utilize the Security API.
 
 Lastly, be sure to update the main README.md in the [Examples](#examples) section to add a new table element for your new code.
 
 Check out our [Contribution](CONTRIBUTING.md) guide for more details.
+
+### Testing
+Each language tests to confirms the HMAC generator works correctly by using Github Actions to send the same GET and POST requests to api.ncr.com. Each language currently has corresponding tests that can be run through the Github Actions workflow file. In adding a new language, tests must be added that can be quickly added to a new Action.
 
 ## License
 
