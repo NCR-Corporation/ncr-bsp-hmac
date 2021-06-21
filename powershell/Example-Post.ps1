@@ -34,6 +34,7 @@ try {
         -ContentType 'application/json' `
         -Headers $headers `
         -Body $body
+        -SkipHeaderValidation
         
     $resp.Content
     return $resp

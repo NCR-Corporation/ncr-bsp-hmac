@@ -31,6 +31,7 @@ try {
         -Method Get `
         -ContentType 'application/json' `
         -Headers $headers
+        -SkipHeaderValidation
         
     $resp.Content
     return $resp
