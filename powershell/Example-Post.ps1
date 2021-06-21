@@ -33,7 +33,7 @@ try {
         -Method POST `
         -ContentType 'application/json' `
         -Headers $headers `
-        -Body $body
+        -Body $body `
         -SkipHeaderValidation
         
     $resp.Content
