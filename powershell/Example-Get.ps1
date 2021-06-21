@@ -31,7 +31,7 @@ try {
         -Method Get `
         -ContentType 'application/json' `
         -Headers $headers `
-        -SkipHeaderValidation
+        -SkipHeaderValidation #SkipHeaderValidation was added for the Github Actions tests and can be removed.
         
     $resp.Content
     return $resp
