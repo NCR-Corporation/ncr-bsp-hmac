@@ -10,9 +10,9 @@ _This code uses Java 11.0.11_
 1. Inside of `SendGet.java` and `SendPost.java` update the `nepOrganization`, `secretKey`, and `sharedKey` with your values:
 
    ```java
-   secretKey = 'INSERT_SECRET'
-   sharedKey = 'INSERT_SHARED'
-   nepOrganization = 'INSERT_ORGANIZATION'
+   SendGet.callGet("INSERT_SECRET", "INSERT_SHARED", "INSERT_ORGANIZATION");
+   // or 
+   SendPost.callPost("INSERT_SECRET", "INSERT_SHARED", "INSERT_ORGANIZATION");
    ```
 
 1. Once you have made your changes, be sure to save the files before you compile in the next step.
