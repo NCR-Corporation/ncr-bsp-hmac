@@ -40,7 +40,7 @@ public class SendGet extends HmacGenerator {
     public static Integer callGet(String secretKey, String sharedKey, String nepOrganization)
             throws NoSuchAlgorithmException, MalformedURLException, IOException, ProtocolException, InvalidKeyException,
             ScriptException {
-        String url = "https://api.ncr.com/security/roles?roleNamePattern=*&pageNumber=0&pageSize=10";
+        String url = "https://api.ncr.com/security/role-grants/user-grants/self/effective-roles";
         String httpMethod = "GET";
         String contentType = "application/json";
 

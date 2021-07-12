@@ -17,24 +17,18 @@ The example helper function lives in `hmac.psm1` which contains the HMAC `Access
    ```console
    PS C:\ncr-bsp-hmac\powershell> .\Example-Get.ps1
    // GET Request to view the first 10 roles in BSP:
-   //{ "status": OK }
-   //{ "Data": {
-   //    "lastPage": false,
-   //    "pageNumber": 0,
-   //    "totalPages": 190,
-   //    "totalResults": 1899,
-   //    "pageContent": [
-   //       {
-   //            "roleName": "ALOHA_AAL_SERVER_LICENSE_DOWNLOAD",
-   //            "description": "User with this role is authorized to download ALX license from AAL Server API.",
-   //            "restrictImplies": false
-   //       },
-   //       {
-   //            "roleName": "ALOHA_AAL_SERVER_SITE_MANIFEST_VIEWER",
-   //            "description": "User with this role is authorized to see site manifest for an enterprise unit.",
-   //            "restrictImplies": false
-   //       }
-   //       ... Roles List ...
+   // {'status': 200 },
+   // {'data': {
+   //   "content":[
+   //      {
+   //         "roleName":"NEP_ENTERPRISE_SUPER_ADMINISTRATOR"
+   //      },
+   //      {
+   //         "roleName":"R1_DC_VIEWER"
+   //      },
+   //      ...More Roles...
+   //   ]
+   // }}
    ```
 
    ```console

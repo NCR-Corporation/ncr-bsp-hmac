@@ -11,7 +11,7 @@ _This code uses Java 11.0.11_
 
    ```java
    SendGet.callGet("INSERT_SECRET", "INSERT_SHARED", "INSERT_ORGANIZATION");
-   // or 
+   // or
    SendPost.callPost("INSERT_SECRET", "INSERT_SHARED", "INSERT_ORGANIZATION");
    ```
 
@@ -38,24 +38,18 @@ _This code uses Java 11.0.11_
    ```console
    $ java SendGet
    // GET Request to view the first 10 roles in BSP:
-   //{ "status": OK }
-   //{ "Data": {
-   //    "lastPage": false,
-   //    "pageNumber": 0,
-   //    "totalPages": 190,
-   //    "totalResults": 1899,
-   //    "pageContent": [
-   //       {
-   //            "roleName": "ALOHA_AAL_SERVER_LICENSE_DOWNLOAD",
-   //            "description": "User with this role is authorized to download ALX license from AAL Server API.",
-   //            "restrictImplies": false
-   //       },
-   //       {
-   //            "roleName": "ALOHA_AAL_SERVER_SITE_MANIFEST_VIEWER",
-   //            "description": "User with this role is authorized to see site manifest for an enterprise unit.",
-   //            "restrictImplies": false
-   //       }
-   //       ... Roles List ...
+   // {'status': 200 },
+   // {'data': {
+   //   "content":[
+   //      {
+   //         "roleName":"ROLE_NAME"
+   //      },
+   //      {
+   //         "roleName":"ROLE_NAME"
+   //      },
+   //      ...More Roles...
+   //   ]
+   // }}
    ```
 
    ```console
