@@ -11,7 +11,7 @@ def exampleGet(secretKey="INSERT_SECRET", sharedKey="INSERT_SHARED", nepOrganiza
     now = datetime(now.year, now.month, now.day, hour=now.hour,
                    minute=now.minute, second=now.second)
 
-    requestURL = "https://api.ncr.com/security/roles?roleNamePattern=*&pageNumber=0&pageSize=10"
+    requestURL = "https://api.ncr.com/security/role-grants/user-grants/self/effective-roles"
     httpMethod = 'GET'
     contentType = 'application/json'
 

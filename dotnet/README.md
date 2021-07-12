@@ -9,6 +9,7 @@ _This code uses Dotnet 5_
 1. Navigate to the directory of the call you would like to send via the command line.
 
 2. Add the RestSharp API client libray via the command line while inside call directory(this will need to be done for both of the folders containing the calls):
+
    ```console
    $cd SendGet
    $dotnet add package RestSharp
@@ -31,34 +32,28 @@ _This code uses Dotnet 5_
 
 4. To test, Navigate inside of the correct directory and:
 
-   ```console 
+   ```console
    $ dotnet run
    // GET Request to view the first 10 roles in BSP:
-   //{ "status": OK }
-   //{ "Data": {
-   //    "lastPage": false,
-   //    "pageNumber": 0,
-   //    "totalPages": 190,
-   //    "totalResults": 1899,
-   //    "pageContent": [
-   //       {
-   //            "roleName": "ALOHA_AAL_SERVER_LICENSE_DOWNLOAD",
-   //            "description": "User with this role is authorized to download ALX license from AAL Server API.",
-   //            "restrictImplies": false
-   //       },
-   //       {
-   //            "roleName": "ALOHA_AAL_SERVER_SITE_MANIFEST_VIEWER",
-   //            "description": "User with this role is authorized to see site manifest for an enterprise unit.",
-   //            "restrictImplies": false
-   //       }
-   //       ... Roles List ...
+   // {'status': 200 },
+   // {'data': {
+   //   "content":[
+   //      {
+   //         "roleName":"ROLE_NAME"
+   //      },
+   //      {
+   //         "roleName":"ROLE_NAME"
+   //      },
+   //      ...More Roles...
+   //   ]
+   // }}
    ```
 
    ```console
    $ dotnet run
    // POST Request gain an access token
    //{ "status": OK }
-   //{ "Data": 
+   //{ "Data":
    //   {
    //      "token": "{{YOUR_TOKEN}}}",
    //      "maxIdleTime": 900,

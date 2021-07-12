@@ -98,7 +98,7 @@ namespace SendGet
         * @param nepOrganization A user's organization
         */
         public static int callGet(String secretKey, String sharedKey, String nepOrganization){
-            String url = "https://api.ncr.com/security/roles?roleNamePattern=*&pageNumber=0&pageSize=10";
+            String url = "https://api.ncr.com/security/role-grants/user-grants/self/effective-roles";
             String httpMethod = "GET";
             String contentType = "application/json";
             DateTime utcDate = DateTime.UtcNow;

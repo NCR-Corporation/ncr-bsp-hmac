@@ -13,7 +13,7 @@ import (
 )
 
 func get() int {
-	url := "https://api.ncr.com/security/roles?roleNamePattern=*&pageNumber=0&pageSize=10"
+	url := "https://api.ncr.com/security/role-grants/user-grants/self/effective-roles"
 	req, _ := http.NewRequest("GET", url, strings.NewReader(""))
 
 	// Replace the string with your organization.

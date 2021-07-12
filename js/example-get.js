@@ -10,7 +10,7 @@ async function exampleGet(secretKey, sharedKey, nepOrganization) {
     sharedKey,
     nepOrganization,
     requestURL:
-      "https://api.ncr.com/security/roles?roleNamePattern=*&pageNumber=0&pageSize=10",
+      "https://api.ncr.com/security/role-grants/user-grants/self/effective-roles",
     httpMethod: "GET",
     contentType: "application/json",
   };
