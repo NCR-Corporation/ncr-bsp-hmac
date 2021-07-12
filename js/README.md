@@ -30,34 +30,30 @@ The example helper function lives in `hmac.js` which containst the details on ho
    //      ...More Roles...
    //   ]
    // }}
-   ```
 
    // POST Request gain an access token
    //{ "status": OK }
-   //{ "Data":
-   // {
-   // "token": "{{YOUR_TOKEN}}}",
-   // "maxIdleTime": 900,
-   // "maxSessionTime": 900,
-   // "remainingTime": 900,
-   // "authorities": [
-   // "NEP_IDENTITY_VIEWER",
-   // ... Roles List ...
-   // "SITE_UPDATE"
-   // ],
-   // "consentScopes": [],
-   // "credentialExpired": false,
-   // "organizationName": "{{YOUR_ORGANIZATION_NAME}}",
-   // "username": "{{YOUR_ORGANIZATION}}",
-   // "authenticationMethods": [
-   // "access-key"
-   // ],
-   // "exchangesCompleted": 0,
-   // "customClaims": [],
-   // "singleUse": false
+   //{ "Data": 
+   //   {
+   //      "token": "{{YOUR_TOKEN}}}",
+   //      "maxIdleTime": 900,
+   //      "maxSessionTime": 900,
+   //      "remainingTime": 900,
+   //      "authorities": [
+   //          "NEP_IDENTITY_VIEWER",
+   //            ... Roles List ...
+   //          "SITE_UPDATE"
+   //   ],
+   //   "consentScopes": [],
+   //   "credentialExpired": false,
+   //   "organizationName": "{{YOUR_ORGANIZATION_NAME}}",
+   //   "username": "{{YOUR_ORGANIZATION}}",
+   //   "authenticationMethods": [
+   //      "access-key"
+   //   ],
+   //   "exchangesCompleted": 0,
+   //   "customClaims": [],
+   //   "singleUse": false
+   //   }
    // }
-   //}
-
-   ```
-
    ```
