@@ -1,8 +1,9 @@
 ﻿using System;
+using System.Net.Http;
 using System.Security.Cryptography;
 using System.Text;
-using RestSharp;
 using System.Text.Json;
+using System.Threading.Tasks;
 
 namespace SendPost
 {
@@ -12,15 +13,15 @@ namespace SendPost
         *Main
         *@param args
         */
-        static void Main(string[] args)
+        static async Task Main()
         {
-            callPost("INSERT_SECRET", "INSERT_SHARED", "INSERT_ORGANIZATION");
+            await CallPost("INSERT_SECRET", "INSERT_SHARED", "INSERT_ORGANIZATION");
         }
 
         /**
         * @param sharedKey  A user's Shared Key
         * @param secretKey A user's Secret Key
-        * @param date An unformated date string
+        * @param date An unformatted date string
         * @param httpMethod GET/POST/PUT
         * @param requestUrl The API url requesting against
         * @param contentType Optional
@@ -31,62 +32,67 @@ namespace SendPost
         * @param nepServiceVersion Optional
         * @return sharedKey:hmac
         */
-        public static string CreateHMAC(
+        public static string CreateHmac(
             string sharedKey,
             string secretKey,
             string date,
             string httpMethod,
-            string requestURL,
+            string requestUrl,
             string contentType = null,
-            string contentMD5 = null,
+            string contentMd5 = null,
             string nepApplicationKey = null,
-            string nepCorrelationID = null,
+            string nepCorrelationId = null,
             string nepOrganization = null,
             string nepServiceVersion = null)
         {
-            Uri url = new Uri(requestURL);
-            string pathAndQuery = url.PathAndQuery;
-            
-            string secretDate = date + ".000Z";
-            string oneTimeSecret = secretKey + secretDate;
-            
-            string toSign = httpMethod + "\n" + pathAndQuery;
+            var url = new Uri(requestUrl);
+            var pathAndQuery = url.PathAndQuery;
 
-            if (!String.IsNullOrEmpty(contentType))
+            var secretDate = date + ".000Z";
+            var oneTimeSecret = secretKey + secretDate;
+
+            var toSign = httpMethod + "\n" + pathAndQuery;
+
+            if (!string.IsNullOrEmpty(contentType))
             {
                 toSign += "\n" + contentType;
             }
-            if (!String.IsNullOrEmpty(contentMD5))
+
+            if (!string.IsNullOrEmpty(contentMd5))
             {
-                toSign += "\n" + contentMD5;
+                toSign += "\n" + contentMd5;
             }
-            if (!String.IsNullOrEmpty(nepApplicationKey))
+
+            if (!string.IsNullOrEmpty(nepApplicationKey))
             {
                 toSign += "\n" + nepApplicationKey;
             }
-            if (!String.IsNullOrEmpty(nepCorrelationID))
+
+            if (!string.IsNullOrEmpty(nepCorrelationId))
             {
-                toSign += "\n" + nepCorrelationID;
+                toSign += "\n" + nepCorrelationId;
             }
-            if (!String.IsNullOrEmpty(nepOrganization))
+
+            if (!string.IsNullOrEmpty(nepOrganization))
             {
                 toSign += "\n" + nepOrganization;
             }
-            if (!String.IsNullOrEmpty(nepServiceVersion))
+
+            if (!string.IsNullOrEmpty(nepServiceVersion))
             {
                 toSign += "\n" + nepServiceVersion;
             }
 
             var data = Encoding.UTF8.GetBytes(toSign);
             var key = Encoding.UTF8.GetBytes(oneTimeSecret);
-            byte[] hash = null;
+            byte[] hash;
 
-            using (HMACSHA512 shaM = new HMACSHA512(key))
+            using (var shaM = new HMACSHA512(key))
             {
                 hash = shaM.ComputeHash(data);
             }
 
-            string accessKey = sharedKey + ":" + System.Convert.ToBase64String(hash);
+            var accessKey = sharedKey + ":" + Convert.ToBase64String(hash);
             return accessKey;
         }
 
@@ -96,37 +102,40 @@ namespace SendPost
         * @param sharedKey A user's Shared Key
         * @param nepOrganization A user's organization
         */
-        public static int callPost(
-            String secretKey, 
-            String sharedKey, 
-            String nepOrganization)
+        public static async Task<int> CallPost(
+            string secretKey,
+            string sharedKey,
+            string nepOrganization)
         {
-            DateTime utcDate = DateTime.UtcNow;
-            String url = "https://api.ncr.com/security/authorization";
-            String httpMethod = "POST";
-            String contentType = "application/json";
-            String hmacAccessKey = CreateHMAC(sharedKey, secretKey, DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss"), httpMethod, url, contentType, "", "", "", nepOrganization, "");
+            var utcDate = DateTime.UtcNow;
+            var url = "https://api.ncr.com/security/authorization";
+            var httpMethod = "POST";
+            var contentType = "application/json";
+            var hmacAccessKey = CreateHmac(sharedKey, secretKey, DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss"),
+                httpMethod, url, contentType, "", "", "", nepOrganization, "");
 
-            var client = new RestClient(url);
-            var request = new RestRequest(Method.POST);
-            var gmtDate = utcDate.DayOfWeek.ToString().Substring(0,3) + ", " + utcDate.ToString("dd MMM yyyy HH:mm:ss") + " GMT";
+            var client = new HttpClient();
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
+            var gmtDate = utcDate.DayOfWeek.ToString().Substring(0, 3) + ", " +
+                          utcDate.ToString("dd MMM yyyy HH:mm:ss") + " GMT";
 
-            request.AddHeader("nep-organization", nepOrganization);
-            request.AddHeader("content-type", contentType);
-            request.AddHeader("date", gmtDate);
-            request.AddHeader("authorization", "AccessKey " + hmacAccessKey);
+            request.Headers.Add("nep-organization", nepOrganization);
+            request.Headers.Add("date", gmtDate);
+            request.Headers.Add("authorization", "AccessKey " + hmacAccessKey);
 
-            IRestResponse response = client.Execute(request);
+            var response = await client.SendAsync(request);
+            var responseContentString = await response.Content.ReadAsStringAsync();
 
-            var responseContent = JsonSerializer.Deserialize<ContentModel>(response.Content);
-            var options = new JsonSerializerOptions(){
+            var responseContent = JsonSerializer.Deserialize<ContentModel>(responseContentString);
+            var options = new JsonSerializerOptions()
+            {
                 WriteIndented = true
             };
 
-            var formattedJSON = JsonSerializer.Serialize(responseContent, options);    
+            var formattedJson = JsonSerializer.Serialize(responseContent, options);
 
-            Console.WriteLine("{ \"status\": " + response.StatusCode + " }\n{ \"Data\": \n" + formattedJSON + "\n}");
-			return (int) response.StatusCode;
+            Console.WriteLine("{ \"status\": " + response.StatusCode + " }\n{ \"Data\": \n" + formattedJson + "\n}");
+            return (int)response.StatusCode;
         }
     }
 }
