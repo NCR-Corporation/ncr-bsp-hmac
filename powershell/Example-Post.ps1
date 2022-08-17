@@ -11,7 +11,7 @@ if ($env:SHARED_KEY -And  $env:SECRET_KEY -And $env:ORGANIZATION) {
 }
 
 $url = "https://api.ncr.com/security/authorization"
-$now = Get-Date -Format R
+$now = Get-Date -UFormat "%A, %B %e, %Y %I:%M:%S %p"
 
 $accessKey = Get-AccessKey -sharedKey $sharedKey `
     -secretKey $secretKey `
@@ -19,15 +19,12 @@ $accessKey = Get-AccessKey -sharedKey $sharedKey `
     -url $url `
     -organization $organization `
     -date $now
-
 $body = ConvertTo-Json @{ }
-
 $headers = @{
     'Date' = $now
     'Authorization' = "AccessKey $accessKey"
     'nep-organization' = $organization
 }
-
 try {
     $resp = Invoke-WebRequest -Uri $url `
         -Method POST `

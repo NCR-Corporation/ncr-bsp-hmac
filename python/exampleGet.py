@@ -5,7 +5,7 @@ import json
 import requests
 
 
-def exampleGet(secretKey="INSERT_SECRET", sharedKey="INSERT_SHARED", nepOrganization="INSERT_ORGANIZATION"):
+def exampleGet(secretKey="9a27e38da2194950a04fcba431ad9b99", sharedKey="139aa99b486c4848821929b85b0b5b03", nepOrganization="test-drive-ed002b0e2b234b32858eb"):
     
     now = datetime.now(tz=timezone.utc)
     now = datetime(now.year, now.month, now.day, hour=now.hour,
