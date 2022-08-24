@@ -24,19 +24,14 @@ _This code uses Java 11.0.11_
    ```
 
    ```console
-   $ javac SendGet.java
-   // Compiles and creates the class for the GET API call
-   ```
-
-   ```console
-   $ javac SendPost.java
-   // Compiles and creates the class for the POST API call
+   $ javac SendGet.java SendPost.java
+   // Compiles and creates the class for the GET and POST API call
    ```
 
 1. To test:
 
    ```console
-   $ java SendGet
+   $ java -cp . SendGet
    // GET Request to view the first 10 roles in BSP:
    // {'status': 200 },
    // {'data': {
@@ -53,30 +48,21 @@ _This code uses Java 11.0.11_
    ```
 
    ```console
-   $ java SendPost
+   $ java -cp . SendPost
    // POST Request gain an access token
    //{ "status": OK }
-   //{ "Data":
-   //   {
-   //      "token": "{{YOUR_TOKEN}}}",
-   //      "maxIdleTime": 900,
-   //      "maxSessionTime": 900,
-   //      "remainingTime": 900,
-   //      "authorities": [
-   //          "NEP_IDENTITY_VIEWER",
-   //            ... Roles List ...
-   //          "SITE_UPDATE"
-   //   ],
-   //   "consentScopes": [],
-   //   "credentialExpired": false,
-   //   "organizationName": "{{YOUR_ORGANIZATION_NAME}}",
-   //   "username": "{{YOUR_ORGANIZATION}}",
-   //   "authenticationMethods": [
-   //      "access-key"
-   //   ],
-   //   "exchangesCompleted": 0,
-   //   "customClaims": [],
-   //   "singleUse": false
-   //   }
+   //{'status': 200 },
+   //{'data': {
+   //"token":"[REDACTED]",
+   //"maxIdleTime":900,
+   //"maxSessionTime":900,
+   //"remainingTime":900,
+   //"authorities":[
+   //  "NEP_IDENTITY_DELETE",
+   //  "DELIVERY_SCRUBBER",
+   //  "R1_ORDER_SITE_ADMINISTRATOR",
+   //  "R1_ORDER_SITE_VIEWER",
+   //  "TDM_ADMIN",
+   //  "NEP_CONFIG_SETTINGS_VIEWER",
    //}
    ```
