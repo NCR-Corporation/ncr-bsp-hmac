@@ -107,8 +107,6 @@ namespace SendGet
 
             var hmacAccessKey = CreateHmac(sharedKey, secretKey, "2022-08-24T18:47:52",
                 httpMethod, url, contentType, "", "", "", nepOrganization, "");
-            Console.WriteLine(hmacAccessKey);
-
 
             var client = new RestClient(url);
             var request = new RestRequest();
