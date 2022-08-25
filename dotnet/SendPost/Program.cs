@@ -16,7 +16,7 @@ namespace SendPost
         */
         private static void Main()
         {
-            CallPost("60df9f1b0e16457d8453461956677306", "c00f3458f0774eac93cdef91af364c4f", "test-drive-ed002b0e2b234b32858eb");
+            CallPost("INSERT_SECRET", "INSERT_SHARED", "INSERT_ORGANIZATION");
         }
 
         /**
