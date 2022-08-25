@@ -1,4 +1,7 @@
-public class Content
+namespace SendGet
 {
-    public string roleName { get; set; }
+    public class Content
+    {
+        public string roleName { get; set; }
+    }
 }

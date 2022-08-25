@@ -1,3 +1,7 @@
-public class ContentModel{
-    public Content[] content{get; set;}
+namespace SendGet
+{
+    public class ContentModel{
+        public Content[] content{get; set;}
+    }
 }
+
