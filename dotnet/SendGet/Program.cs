@@ -122,6 +122,11 @@ namespace SendGet
             request.Headers.Add("date", gmtDate);
             request.Headers.Add("authorization", "AccessKey " + hmacAccessKey);
 
+            var content = new StringContent(String.Empty, Encoding.UTF8, "application/json");
+            content.Headers.Remove("Content-Type"); 
+            content.Headers.Add("Content-Type", "application/json");
+            request.Content = content;
+
             var response = await client.SendAsync(request);
 
             var responseContent = JsonSerializer.Deserialize<ContentModel>(
@@ -134,7 +139,7 @@ namespace SendGet
 
             var formattedJson = JsonSerializer.Serialize(responseContent, options);
 
-            Console.WriteLine("{ \"status\": " + response.StatusCode + " }\n{ \"Data\": \n" + formattedJson + "\n}");
+            Console.WriteLine("{ \"status\": " + response.StatusCode + " }\n" + formattedJson );
             return (int)response.StatusCode;
         }
     }

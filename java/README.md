@@ -24,19 +24,14 @@ _This code uses Java 11.0.11_
    ```
 
    ```console
-   $ javac SendGet.java
-   // Compiles and creates the class for the GET API call
-   ```
-
-   ```console
-   $ javac SendPost.java
-   // Compiles and creates the class for the POST API call
+   $ javac -cp . SendGet.java SendPost.java
+   // Compiles and creates the class for the GET & POST API call
    ```
 
 1. To test:
 
    ```console
-   $ java SendGet
+   $ java -cp . SendGet
    // GET Request to view the first 10 roles in BSP:
    // {'status': 200 },
    // {'data': {
@@ -53,7 +48,7 @@ _This code uses Java 11.0.11_
    ```
 
    ```console
-   $ java SendPost
+   $ java -cp . SendPost
    // POST Request gain an access token
    //{ "status": OK }
    //{ "Data":
