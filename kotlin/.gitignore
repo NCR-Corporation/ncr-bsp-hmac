@@ -1,0 +1,17 @@
+### Java ###
+*.class
+build
+bin
+out
+
+### Intellij ###
+.idea/
+*.iml
+.idea_modules/
+
+### Visual Studio Code ###
+.vscode
+.history
+
+### Gradle ###
+.gradle
